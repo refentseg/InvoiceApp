@@ -2,7 +2,9 @@ using System.Text;
 using API.Data;
 using API.Entity;
 using API.RequestHelpers;
+using API.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
@@ -82,8 +84,11 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         };
     });
 builder.Services.AddDbContext<InvoiceContext>(opt =>{
-                opt.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
-            });
+    opt.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection"));
+});
+
+builder.Services.AddAuthorization();
+builder.Services.AddScoped<TokenService>();
 
 var app = builder.Build();
 
@@ -99,8 +104,23 @@ if (app.Environment.IsDevelopment())
 
 }
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
+
+using var scope = app.Services.CreateScope();
+var context = scope.ServiceProvider.GetRequiredService<InvoiceContext>();
+var userManager = scope.ServiceProvider.GetRequiredService<UserManager<User>>();
+var logger = scope.ServiceProvider.GetRequiredService<ILogger<Program>>();
+try
+{
+    await context.Database.MigrateAsync();
+    await DbIntializier.IntializeAsync(context,userManager);
+}
+catch (Exception ex)
+{
+    logger.LogError(ex, "Problem migrating data");
+}
 
 app.Run();
