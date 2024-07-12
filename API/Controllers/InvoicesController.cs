@@ -23,88 +23,90 @@ namespace API.Controllers
     public class InvoicesController:BaseApiController
     {
         private readonly InvoiceContext _context;
+        private readonly UserManager<User> _userManager;
         private readonly ILogger<InvoicesController> _logger;
        
-        public InvoicesController(InvoiceContext context,ILogger<InvoicesController> logger)
+        public InvoicesController(InvoiceContext context,ILogger<InvoicesController> logger,UserManager<User> userManager)
         {
             _context = context;
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
+            _userManager = userManager;
         }
 
-[HttpGet]
-public async Task<ActionResult<PagedList<InvoiceDto>>> GetInvoices([FromQuery]InvoiceParams invoiceParams)
-{
-    var query = _context.Invoices
-        .Sort(invoiceParams.OrderBy)
-        .Search(invoiceParams.SearchTerm)
-        .Filter(invoiceParams.Status)
-        .AsQueryable();
-
-        var invoices = await PagedList<InvoiceDto>.ToPagedList(query.ProjectInvoiceToInvoiceDto(), invoiceParams.PageNumber, invoiceParams.PageSize);
-
-        Response.AddPaginationHeader(invoices.MetaData);
-
-        return invoices;
-}
-
-[HttpGet("{id}",Name ="GetInvoice")]
-public async Task<ActionResult<InvoiceDto>> GetInvoice(string id)
-{
-    return await _context.Invoices
-        .ProjectInvoiceToInvoiceDto()
-        .Where(x => x.Id == id)
-        .FirstOrDefaultAsync();
-
-}
-[HttpGet("filters")]
-public async Task<IActionResult> GetFilters()
-{
-    var status = await _context.Invoices.Select(i =>i.InvoiceStatus).Distinct().ToListAsync();
-
-    return Ok(new{status});
-}
-//Pre-Invoice Number
-[HttpGet("next")]
-public async Task<IActionResult> GetNextInvoiceNumber()
-{
-    int currentIdCounter = await GetCurrentIdCounter();
-    string invoiceNumber = "INVTBT" + currentIdCounter.ToString("D3");
-    
-    // Return the invoice number without updating the counter
-    return Ok(new InvoiceNumberDto { InvoiceNumber = invoiceNumber });
-}
-
-
-
-private async Task<int> GetCurrentIdCounter()
-{
-    var counter = await _context.Counters.FirstOrDefaultAsync();
-    if (counter == null)
+    [HttpGet]
+    public async Task<ActionResult<PagedList<InvoiceDto>>> GetInvoices([FromQuery]InvoiceParams invoiceParams)
     {
-        counter = new Counter { CounterValue = 0 };
-        _context.Counters.Add(counter);
-        await _context.SaveChangesAsync();
-    }
-    return counter.CounterValue;
-}
+        var query = _context.Invoices
+            .Sort(invoiceParams.OrderBy)
+            .Search(invoiceParams.SearchTerm)
+            .Filter(invoiceParams.Status)
+            .AsQueryable();
 
-private async Task IncrementIdCounter()
-{
-    var counter = await _context.Counters.FirstOrDefaultAsync();
-    if (counter != null)
+            var invoices = await PagedList<InvoiceDto>.ToPagedList(query.ProjectInvoiceToInvoiceDto(), invoiceParams.PageNumber, invoiceParams.PageSize);
+
+            Response.AddPaginationHeader(invoices.MetaData);
+
+            return invoices;
+    }
+
+    [HttpGet("{id}",Name ="GetInvoice")]
+    public async Task<ActionResult<InvoiceDto>> GetInvoice(string id)
     {
-        counter.CounterValue++;
-        await _context.SaveChangesAsync();
-    }
-}
+        return await _context.Invoices
+            .ProjectInvoiceToInvoiceDto()
+            .Where(x => x.Id == id)
+            .FirstOrDefaultAsync();
 
-private async Task<string> GenerateCustomId()
-{
-    int currentIdCounter = await GetCurrentIdCounter();
-    await IncrementIdCounter();
-    
-    return "INVTBT" + currentIdCounter.ToString("D3");
-}
+    }
+    [HttpGet("filters")]
+    public async Task<IActionResult> GetFilters()
+    {
+        var status = await _context.Invoices.Select(i =>i.InvoiceStatus).Distinct().ToListAsync();
+
+        return Ok(new{status});
+    }
+    //Pre-Invoice Number
+    [HttpGet("next")]
+    public async Task<IActionResult> GetNextInvoiceNumber()
+    {
+        int currentIdCounter = await GetCurrentIdCounter();
+        string invoiceNumber = "INVTBT" + currentIdCounter.ToString("D3");
+        
+        // Return the invoice number without updating the counter
+        return Ok(new InvoiceNumberDto { InvoiceNumber = invoiceNumber });
+    }
+
+
+
+    private async Task<int> GetCurrentIdCounter()
+    {
+        var counter = await _context.Counters.FirstOrDefaultAsync();
+        if (counter == null)
+        {
+            counter = new Counter { CounterValue = 0 };
+            _context.Counters.Add(counter);
+            await _context.SaveChangesAsync();
+        }
+        return counter.CounterValue;
+    }
+
+    private async Task IncrementIdCounter()
+    {
+        var counter = await _context.Counters.FirstOrDefaultAsync();
+        if (counter != null)
+        {
+            counter.CounterValue++;
+            await _context.SaveChangesAsync();
+        }
+    }
+
+    private async Task<string> GenerateCustomId()
+    {
+        int currentIdCounter = await GetCurrentIdCounter();
+        await IncrementIdCounter();
+        
+        return "INVTBT" + currentIdCounter.ToString("D3");
+    }
 
 
     //Create Invoice
@@ -156,13 +158,21 @@ private async Task<string> GenerateCustomId()
                 _context.Customers.Add(customer);
             }
 
+            var currentUser = await _userManager.GetUserAsync(User);
+            if (currentUser == null)
+            {
+                return Unauthorized(new ProblemDetails { Title = "Unable to identify the current user" });
+            }
+
+            string salesRepFullName = $"{currentUser.FirstName} {currentUser.LastName}".Trim();
+
             var subtotal = invoiceItems.Sum(item => item.Amount * item.Quantity);
 
                     var invoice = new Invoice
                     {
                         Id =  await GenerateCustomId(),
                         Items = invoiceItems,
-                        SalesRep = User.Identity.Name,
+                        SalesRep = salesRepFullName,
                         CustomerId = customer.Id,
                         Customer = customer,
                         Subtotal = subtotal
@@ -255,8 +265,6 @@ private async Task<string> GenerateCustomId()
                 return BadRequest(new ProblemDetails { Title = "Invalid invoice status" });
             }
 
-            
-
             // Update invoice details
             invoice.CustomerId = customer.Id;
             invoice.Customer = customer;
@@ -280,13 +288,13 @@ private async Task<string> GenerateCustomId()
         }
     }
 
-    private string CurrencyFormat(long amount)
-    {
-        long randAmount = (long)amount / 100;
+    // private string CurrencyFormat(long amount)
+    // {
+    //     long randAmount = (long)amount / 100;
 
-        string formattedAmount = string.Format("R{0:N2}", randAmount);
+    //     string formattedAmount = string.Format("R{0:N2}", randAmount);
 
-        return formattedAmount;
-    }
+    //     return formattedAmount;
+    // }
     }
 }
