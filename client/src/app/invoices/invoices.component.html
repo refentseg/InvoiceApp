@@ -1,0 +1,83 @@
+<div class="container md:pl-[20px] mt-[60px]">
+  <h1>Invoices</h1>
+
+  <!-- Filter Form -->
+
+  <!-- Invoice Table -->
+
+      <!-- <div class="flex ">
+        <table class=" md:w-full bg-white md:ml-[50px] md:mr-[50px] ">
+          <thead class="border">
+            <tr class="text-left">
+              <th class="p-3">#</th>
+              <th class="p-3">Date</th>
+              <th class="p-3">Customer</th>
+              <th class="p-4">Status</th>
+              <th class="p-3">Amount</th>
+              <th class="p-3">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+          @for(invoice of (invoices$ |async); track invoice){
+            <tr class="duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-200 dark:hover:bg-neutral-200">
+              <td class="p-3">{{ invoice.id }}</td>
+              <td class="p-3">{{ formatInvoiceDate(invoice.orderDate)  }}</td>
+              <td class="p-3">
+                <div className="flex flex-col">
+                  <div className="ml-3">{{invoice.customer.fullName}}</div>
+                  <div className="text-gray-500 ml-3">{{invoice.customer.email}}</div>
+                </div>
+              </td>
+              <td class="p-3 pr-[15px]"><div [ngClass]="'status ' + invoice.invoiceStatus">{{invoice.invoiceStatus}}</div></td>
+              <td class="p-3">R {{ invoice.total/100}}</td>
+              <td><div><button>Edit</button> <button class="pl-3">Delete</button> <button class="pl-3">Print</button> </div></td>
+            </tr>
+          }
+          </tbody>
+        </table>
+      </div> -->
+
+      <div class="w-full sm:overflow-x-auto lg:overflow-x-hidden px-2 sm:px-0">
+        <table class="w-full md:w-[85vw] bg-white text-xs sm:text-sm md:text-base md:ml-[30px]">
+          <thead class="border-b">
+            <tr class="text-left">
+              <th class="p-2 sm:p-3">#</th>
+              <th class="p-2 sm:p-3">Date</th>
+              <th class="p-2 sm:p-3">Customer</th>
+              <th class="p-2 sm:p-3">Status</th>
+              <th class="p-2 sm:p-3">Amount</th>
+              <th class="p-2 sm:p-3">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for(invoice of (invoices$ |async); track invoice){
+              <tr class="duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-200 dark:hover:bg-neutral-200">
+                <td class="p-2 sm:p-3">{{ invoice.id }}</td>
+                <td class="p-2 sm:p-3">{{ formatInvoiceDate(invoice.orderDate) }}</td>
+                <td class="p-2 sm:p-3">
+                  <div class="flex flex-col">
+                    <div>{{invoice.customer.fullName}}</div>
+                    <div class="hidden sm:block text-xs text-gray-500">{{invoice.customer.email}}</div>
+                  </div>
+                </td>
+                <td class="p-2 sm:p-3 text-xs md:text-sm md:pl-[-20px]">
+                  <div [ngClass]="'status ' + invoice.invoiceStatus ">{{invoice.invoiceStatus}}</div>
+                </td>
+                <td class="p-2 sm:p-3 ">R {{ invoice.total/100}}</td>
+                <td class="p-2 sm:p-3">
+                  <div class="flex flex-col sm:flex-row space-y-1 sm:space-y-0 sm:space-x-2">
+                    <button class="text-blue-600 hover:underline">Edit</button>
+                    <button class="text-red-600 hover:underline">Delete</button>
+                    <button class="text-green-600 hover:underline">Print</button>
+                  </div>
+                </td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+
+
+  <!-- Pagination Controls -->
+
+</div>
