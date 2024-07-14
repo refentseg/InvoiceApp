@@ -1,7 +1,7 @@
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgClass } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { Component, ViewChild } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Event, NavigationEnd, Router, RouterLink, RouterOutlet } from '@angular/router';
 import { InvoicesComponent } from './invoices/invoices.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -10,6 +10,16 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatListModule} from '@angular/material/list';
 import { BreakpointObserver } from '@angular/cdk/layout';
+import { LucideAngularModule, Archive, User } from 'lucide-angular';
+import { NavItemComponent } from './components/nav-item/nav-item.component';
+import { filter, Subject, takeUntil } from 'rxjs';
+
+interface DashLink {
+  icon: string;
+  path: string;
+  title: string;
+  active: boolean;
+}
 
 @Component({
   selector: 'app-root',
@@ -20,19 +30,30 @@ import { BreakpointObserver } from '@angular/cdk/layout';
     MatButtonModule,
     MatToolbarModule,
     MatSidenavModule,
-    MatListModule],
+    MatListModule,
+    NavItemComponent,
+    NgClass, RouterLink,
+    LucideAngularModule],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
   title = 'InvoicingApp';
 
+  dashlinks: DashLink[] = [
+    { icon: 'home', path: '/', title: 'Dashboard',active:false },
+    { icon: 'archive', path: '/invoices', title: 'Invoices',active:false  },
+    { icon: 'user', path: '/users', title: 'Users',active:false  },
+  ];
+
+  dashlinksWithActive: DashLink[] = [];
+
   @ViewChild(MatSidenav)
   sidenav!: MatSidenav;
   isMobile= true;
 
 
-  constructor(private observer: BreakpointObserver) {}
+  constructor(private observer: BreakpointObserver,private router: Router) {}
 
   ngOnInit() {
     this.observer.observe(['(max-width: 800px)']).subscribe((screenSize) => {
@@ -42,17 +63,37 @@ export class AppComponent {
         this.isMobile = false;
       }
     });
+    this.updateActiveLink(this.router.url);
+
+    this.router.events.pipe(
+      filter(event => event instanceof NavigationEnd),
+    ).subscribe((event: Event) => {
+      if (event instanceof NavigationEnd) {
+        this.updateActiveLink(event.urlAfterRedirects);
+      }
+    });
   }
   isCollapsed = true;
+  expanded = true;
+
+  updateActiveLink(currentPath: string) {
+    this.dashlinksWithActive = this.dashlinks.map(link => ({
+      ...link,
+      active: currentPath.startsWith(link.path) && (link.path !== '/' || currentPath === '/')
+    }));
+  }
+
 
 
   toggleMenu() {
     if(this.isMobile){
       this.sidenav.toggle();
-      this.isCollapsed = false; // On mobile
+      this.isCollapsed = false;
+      this.expanded = true; // On mobile
     } else {
       this.sidenav.open(); //On desktop/tablet
       this.isCollapsed = !this.isCollapsed;
+      this.expanded = !this.expanded;
     }
   }
 }
