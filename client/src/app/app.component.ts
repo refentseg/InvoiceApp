@@ -41,7 +41,7 @@ export class AppComponent {
   title = 'InvoicingApp';
 
   dashlinks: DashLink[] = [
-    { icon: 'home', path: '/', title: 'Dashboard',active:false },
+    { icon: 'house', path: '/', title: 'Dashboard',active:false },
     { icon: 'archive', path: '/invoices', title: 'Invoices',active:false  },
     { icon: 'user', path: '/users', title: 'Users',active:false  },
   ];

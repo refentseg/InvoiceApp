@@ -5,8 +5,8 @@ import { routes } from './app.routes';
 import { provideHttpClient } from '@angular/common/http';
 import { FormControl } from '@angular/forms';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { LucideAngularModule,Archive,User } from 'lucide-angular';
+import { LucideAngularModule,Archive,User, House } from 'lucide-angular';
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideRouter(routes),provideHttpClient(), provideAnimationsAsync(),importProvidersFrom(LucideAngularModule.pick({ Archive, User }))]
+  providers: [provideRouter(routes),provideHttpClient(), provideAnimationsAsync(),importProvidersFrom(LucideAngularModule.pick({ Archive, User,House }))]
 };
