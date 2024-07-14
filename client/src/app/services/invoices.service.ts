@@ -12,8 +12,8 @@ export class InvoicesService {
 
   constructor(private http: HttpClient) { }
 
+  //Getting Invoices with Params
   getInvoices(invoiceParams: InvoiceParams): Observable<Paginatedresponse<Invoice[]>> {
-
     let params = new HttpParams()
       .set('OrderBy', invoiceParams.orderBy)
       .set('PageNumber', invoiceParams.pageNumber.toString())

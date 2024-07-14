@@ -43,7 +43,7 @@ export class AppComponent {
   dashlinks: DashLink[] = [
     { icon: 'house', path: '/', title: 'Dashboard',active:false },
     { icon: 'archive', path: '/invoices', title: 'Invoices',active:false  },
-    { icon: 'user', path: '/users', title: 'Users',active:false  },
+    { icon: 'user', path: '/customers', title: 'Customers',active:false  },
   ];
 
   dashlinksWithActive: DashLink[] = [];
