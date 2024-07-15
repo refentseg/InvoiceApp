@@ -6,7 +6,14 @@ import { provideHttpClient } from '@angular/common/http';
 import { FormControl } from '@angular/forms';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { LucideAngularModule,Archive,User, House } from 'lucide-angular';
+import { AuthGuardService } from './guards/auth-guard.service';
+import { provideToastr, ToastrModule } from 'ngx-toastr';
+import { provideAnimations } from '@angular/platform-browser/animations';
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideRouter(routes),provideHttpClient(), provideAnimationsAsync(),importProvidersFrom(LucideAngularModule.pick({ Archive, User,House }))]
+  providers: [
+    provideAnimations(),
+    provideToastr(),
+    provideRouter(routes),provideHttpClient(), provideAnimationsAsync(),importProvidersFrom(LucideAngularModule.pick({ Archive, User,House })),
+  ]
 };

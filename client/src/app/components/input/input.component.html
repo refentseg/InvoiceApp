@@ -1,12 +1,14 @@
 <div>
   <input
     [type]="type"
+    [id]="label"
     [placeholder]="label"
-    [pattern]="pattern"
     [formControl]="control"
-    [ngClass]="{'error': showError}"
     class="form-input border-t-blue-gray-200 focus:border-t-gray-900"
   >
-  <p *ngIf="showError" class="error-message">{{ errorMessage }}</p>
-  <p *ngIf="!showError" class="error-placeholder">&nbsp;</p>
+  <div *ngIf="control.invalid && (control.dirty || control.touched)" class="alert">
+    <div *ngFor="let error of control.errors | keyvalue">
+      {{ error.value }}
+    </div>
+  </div>
 </div>

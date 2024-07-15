@@ -1,5 +1,5 @@
 import { CommonModule, NgClass } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { Component, ViewChild } from '@angular/core';
 import { Event, NavigationEnd, Router, RouterLink, RouterOutlet } from '@angular/router';
 import { InvoicesComponent } from './invoices/invoices.component';
@@ -7,12 +7,15 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSidenav, MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule, provideAnimations } from '@angular/platform-browser/animations';
 import {MatListModule} from '@angular/material/list';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { LucideAngularModule, Archive, User } from 'lucide-angular';
 import { NavItemComponent } from './components/nav-item/nav-item.component';
 import { filter, Subject, takeUntil } from 'rxjs';
+import { AuthGuardService } from './guards/auth-guard.service';
+import { JwtInterceptorService } from './auth/jwt-interceptor.service';
+import { provideToastr, ToastrModule } from 'ngx-toastr';
 
 interface DashLink {
   icon: string;
@@ -35,6 +38,8 @@ interface DashLink {
     NgClass, RouterLink,
     LucideAngularModule],
   templateUrl: './app.component.html',
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptorService, multi: true }],
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
