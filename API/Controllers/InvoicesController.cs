@@ -32,7 +32,7 @@ namespace API.Controllers
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
             _userManager = userManager;
         }
-
+    
     [HttpGet]
     public async Task<ActionResult<PagedList<InvoiceDto>>> GetInvoices([FromQuery]InvoiceParams invoiceParams)
     {

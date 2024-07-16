@@ -72,6 +72,7 @@ builder.Services.AddIdentityCore<User>(opt =>
 })
     .AddRoles<Role>()
     .AddEntityFrameworkStores<InvoiceContext>();
+
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(opt =>{
         opt.TokenValidationParameters = new TokenValidationParameters
@@ -83,11 +84,11 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["JWTSettings:TokenKey"]!))
         };
     });
+builder.Services.AddAuthorization();
 builder.Services.AddDbContext<InvoiceContext>(opt =>{
     opt.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
 
-builder.Services.AddAuthorization();
 builder.Services.AddScoped<TokenService>();
 
 var app = builder.Build();
@@ -105,6 +106,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseAuthentication();
+
 app.UseAuthorization();
 
 app.MapControllers();

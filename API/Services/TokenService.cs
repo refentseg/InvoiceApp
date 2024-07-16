@@ -35,7 +35,7 @@ namespace API.Services
                 claims.Add(new Claim(ClaimTypes.Role,role));
             }
 
-            string? tokenKeyString = _config.GetSection("JWTSettings:TokenKey").Value;
+            string tokenKeyString = _config.GetSection("JWTSettings:TokenKey").Value;
 
              SymmetricSecurityKey tokenKey = new SymmetricSecurityKey(
                 Encoding.UTF8.GetBytes(

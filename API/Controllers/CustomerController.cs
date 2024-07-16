@@ -22,7 +22,6 @@ namespace API.Controllers
             _context = context;
 
         }
-
         [HttpGet(Name ="GetCustomers")]
 
         public async Task<ActionResult<List<CustomerDto>>> GetCustomers([FromQuery]CustomerParams customerParams)

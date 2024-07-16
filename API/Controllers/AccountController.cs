@@ -27,6 +27,7 @@ namespace API.Controllers
 
         }
 
+        [AllowAnonymous]
         [HttpPost("login")]
         public async Task<ActionResult<UserDto>> Login(LoginDto loginDto)
         {
@@ -43,23 +44,23 @@ namespace API.Controllers
                 Token = await _tokenService.GenerateToken(user),
             };
         }
-
+        [AllowAnonymous]
         [HttpPost("register")]
         public async Task<ActionResult> Register(RegisterDto registerDto)
         {
             var existingUser = await _userManager.FindByNameAsync(registerDto.Username);
             if (existingUser != null)
             {
-            ModelState.AddModelError("Username", "Username is already taken");
-            return ValidationProblem();
+                ModelState.AddModelError("Username", "Username is already taken");
+                return ValidationProblem();
             }
             if (registerDto.Password != registerDto.ConfirmPassword)
             {
-             ModelState.AddModelError("ConfirmPassword", "Passwords do not match");
+                ModelState.AddModelError("ConfirmPassword", "Passwords do not match");
                 return ValidationProblem();
             }
 
-            var user = new User{UserName = registerDto.Username,Email = registerDto.Email,Company = registerDto.Comapny};
+            var user = new User{FirstName=registerDto.FirstName,LastName=registerDto.LastName, UserName = registerDto.Username,Email = registerDto.Email,Company = registerDto.Comapny};
 
             var result = await _userManager.CreateAsync(user,registerDto.Password);
 
