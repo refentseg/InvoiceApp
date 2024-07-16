@@ -25,7 +25,8 @@ namespace API.Entity.InvoiceAggregate
         public List<InvoiceItem> Items {get;set;} = [];
 
         //Methods in Invoice
-        public void AddItem(string name, long amount,int quantity){
+        public void AddItem(string name, long amount,int quantity)
+        {
             var existingItem = Items.FirstOrDefault(item => item.Name == name && item.Amount == amount);
             if (existingItem == null)
             {
