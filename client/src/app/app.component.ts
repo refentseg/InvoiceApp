@@ -16,6 +16,8 @@ import { filter, Subject, takeUntil } from 'rxjs';
 import { AuthGuardService } from './guards/auth-guard.service';
 import { JwtInterceptorService } from './auth/jwt-interceptor.service';
 import { provideToastr, ToastrModule } from 'ngx-toastr';
+import { AuthService } from './auth/auth.service';
+import { LoginComponent } from './auth/login/login.component';
 
 interface DashLink {
   icon: string;
@@ -36,7 +38,7 @@ interface DashLink {
     MatListModule,
     NavItemComponent,
     NgClass, RouterLink,
-    LucideAngularModule],
+    LucideAngularModule,LoginComponent],
   templateUrl: './app.component.html',
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptorService, multi: true }],
@@ -58,7 +60,7 @@ export class AppComponent {
   isMobile= true;
 
 
-  constructor(private observer: BreakpointObserver,private router: Router) {}
+  constructor(private observer: BreakpointObserver,private router: Router,private authService: AuthService) {}
 
   ngOnInit() {
     this.observer.observe(['(max-width: 800px)']).subscribe((screenSize) => {
@@ -100,5 +102,8 @@ export class AppComponent {
       this.isCollapsed = !this.isCollapsed;
       this.expanded = !this.expanded;
     }
+  }
+  get isAuthenticated(): boolean {
+    return this.authService.isAuthenticated();
   }
 }

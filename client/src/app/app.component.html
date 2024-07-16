@@ -1,26 +1,33 @@
-<mat-toolbar color="primary">
-  <button mat-icon-button aria-label="Menu icon" (click)="toggleMenu()">
-    <mat-icon>menu</mat-icon>
-  </button>
-  <h1>Invoicing App</h1>
-  <div></div>
-  <div class="User_Menu">
+<ng-container *ngIf="isAuthenticated">
+  <mat-toolbar color="primary">
+    <button mat-icon-button aria-label="Menu icon" (click)="toggleMenu()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <h1>Invoicing App</h1>
+    <div></div>
+    <div class="User_Menu">
 
-  </div>
-</mat-toolbar>
-<mat-sidenav-container autosize>
-  <mat-sidenav [mode]="isMobile ? 'over' : 'side'" [opened]="isMobile ? 'false' : 'true'">
-      <app-nav-item
-        *ngFor="let link of dashlinksWithActive"
-        [icon]="link.icon"
-        [path]="link.path"
-        [title]="link.title"
-        [active]="link.active"
-        [expanded]="expanded">
-      </app-nav-item>
-  </mat-sidenav>
-  <mat-sidenav-content class="container md:pl-[20px] mt-[30px]">
-    <router-outlet></router-outlet>
-  </mat-sidenav-content>
-</mat-sidenav-container>
+    </div>
+  </mat-toolbar>
+  <mat-sidenav-container autosize>
+    <mat-sidenav [mode]="isMobile ? 'over' : 'side'" [opened]="isMobile ? 'false' : 'true'">
+        <app-nav-item
+          *ngFor="let link of dashlinksWithActive"
+          [icon]="link.icon"
+          [path]="link.path"
+          [title]="link.title"
+          [active]="link.active"
+          [expanded]="expanded">
+        </app-nav-item>
+    </mat-sidenav>
+    <mat-sidenav-content class="container md:pl-[20px] mt-[30px]">
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</ng-container>
+<ng-container *ngIf="!isAuthenticated">
+  <!-- Replace with your login page or component -->
+  <app-login></app-login>
+</ng-container>
+
 

@@ -6,12 +6,16 @@ import { AsyncPipe, CommonModule, NgFor } from '@angular/common';
 import { map, Observable } from 'rxjs';
 import { ButtonComponent } from '../components/button/button.component';
 import { MetaData } from '../models/pagination';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { JwtInterceptorService } from '../auth/jwt-interceptor.service';
+import { AuthService } from '../auth/auth.service';
 
 @Component({
   selector: 'app-invoices',
   standalone: true,
   imports: [CommonModule,AsyncPipe,ButtonComponent],
   templateUrl: './invoices.component.html',
+  providers:[],
   styleUrl: './invoices.component.css'
 })
 export class InvoicesComponent implements OnInit{
@@ -26,10 +30,31 @@ export class InvoicesComponent implements OnInit{
   paginationMetaData!: MetaData;
 
 
-  invoiceService = inject(InvoicesService)
+  constructor(
+    private invoiceService: InvoicesService,
+    private authService: AuthService
+  ) {}
 
   ngOnInit():void {
+    const userString = localStorage.getItem('user');
+  if (userString) {
+    const user = JSON.parse(userString);
+    console.log('Token from localStorage:', user.token);
     this.loadInvoices();
+  } else {
+    console.log('No user found in localStorage');
+  }
+
+
+  }
+
+  loadInvoices() {
+    this.invoices$ = this.invoiceService.getInvoices(this.invoiceParams).pipe(
+      map(response => {
+        this.paginationMetaData = response.metaData;
+        return response.items;
+      })
+    );
   }
 
 
@@ -49,13 +74,6 @@ export class InvoicesComponent implements OnInit{
   }
 
 
-  loadInvoices() {
-    this.invoices$ = this.invoiceService.getInvoices(this.invoiceParams).pipe(
-      map(response => {
-        this.paginationMetaData = response.metaData;
-        return response.items;
-      })
-    );
-  }
+
 
 }

@@ -1,21 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { InputComponent } from '../../components/input/input.component';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { z } from 'zod';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
 import { zodValidator } from '../../validation/validator';
 import { ToastrService } from 'ngx-toastr';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [InputComponent],
+  imports: [CommonModule, ReactiveFormsModule,InputComponent,FormsModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
 export class LoginComponent implements OnInit{
-  loginForm!: FormGroup;
+  loginForm: FormGroup = new FormGroup({});
   isLoading = false;
   loginError: string | null = null;
 
@@ -23,19 +24,28 @@ export class LoginComponent implements OnInit{
     username: z.string(),
     password: z.string()
   });
+  authService = inject(AuthService)
 
   constructor(
     private fb: FormBuilder,
-    private authService: AuthService,
     private router: Router,
     private toastr: ToastrService
-  ) {}
+  ) {
 
-  ngOnInit() {
+  }
+  ngOnInit(): void {
     this.loginForm = this.fb.group({
-      username: ['', zodValidator(this.loginSchema.shape.username)],
-      password: ['', zodValidator(this.loginSchema.shape.password)]
+      username: ['', Validators.required],
+      password: ['', Validators.required]
     });
+  }
+
+  get usernameControl(): FormControl {
+    return this.loginForm.get('username') as FormControl;
+  }
+
+  get passwordControl(): FormControl {
+    return this.loginForm.get('password') as FormControl;
   }
 
   onSubmit() {
@@ -50,15 +60,18 @@ export class LoginComponent implements OnInit{
             this.toastr.success('Login successful!');
             this.router.navigate(['/']);
           } else {
+            this.toastr.error('Login failed. Please try again.');
             this.loginError = 'Login failed. Please try again.';
           }
         },
         error: (error) => {
           this.isLoading = false;
           this.loginError = 'An error occurred. Please try again later.';
+          this.toastr.error('Login failed. Please try again.');
           console.error('Login error:', error);
         }
       });
     }
   }
+
 }

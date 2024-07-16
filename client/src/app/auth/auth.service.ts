@@ -9,10 +9,6 @@ import { User } from '../models/user';
 export class AuthService {
 
   private baseUrl: string = 'http://localhost:5000/api'
-
-
-
-  isLoggedIn: boolean = false;
   private _user : BehaviorSubject<User | null>;
   public user$? :Observable<User |null>;
 
@@ -25,19 +21,13 @@ export class AuthService {
     return this._user.value;
   }
 
-  login(userDetails: { username: string; password: string }): Observable<boolean> {
+  login(userDetails: { username: string; password: string }): Observable<User> {
     return this.http.post<any>('http://localhost:5000/api/account/login', userDetails)
       .pipe(
         map(user => {
           localStorage.setItem('user',JSON.stringify(user));
           this._user.next(user);
-          this.isLoggedIn =true
-          return true;
-        }),
-        catchError(error => {
-          console.log(error);
-          this.isLoggedIn = false;
-          return of(false);
+          return user;
         })
       );
   }
@@ -45,10 +35,10 @@ export class AuthService {
   logout(): void {
     localStorage.removeItem('user');
     this._user.next(null);
-    this.isLoggedIn = false;
   }
 
-  isAuthenticated(): boolean {
-    return this.isLoggedIn;
+  isAuthenticated(): boolean{
+    const user = localStorage.getItem('user');
+    return !!user;
   }
 }
