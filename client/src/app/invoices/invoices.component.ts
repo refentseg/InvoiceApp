@@ -9,11 +9,12 @@ import { MetaData } from '../models/pagination';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtInterceptorService } from '../auth/jwt-interceptor.service';
 import { AuthService } from '../auth/auth.service';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-invoices',
   standalone: true,
-  imports: [CommonModule,AsyncPipe,ButtonComponent],
+  imports: [CommonModule,AsyncPipe,ButtonComponent,RouterModule],
   templateUrl: './invoices.component.html',
   providers:[],
   styleUrl: './invoices.component.css'

@@ -5,6 +5,7 @@ import { PageNotFoundComponent } from './Errors/page-not-found/page-not-found.co
 import { CustomerComponent } from './customer/customer.component';
 import { LoginComponent } from './auth/login/login.component';
 import { AuthGuardService } from './guards/auth-guard.service';
+import { InvoiceCreateComponent } from './invoices/create/create.component';
 
 export const routes: Routes = [
   {
@@ -23,6 +24,12 @@ export const routes: Routes = [
     path:'customers',
     component: CustomerComponent,
     title:'Invoice App | Customers',
+    canActivate: [AuthGuardService]
+  },
+  {
+    path:'invoice/create',
+    component: InvoiceCreateComponent,
+    title:'Invoice App | Create Invoice',
     canActivate: [AuthGuardService]
   },
   {
