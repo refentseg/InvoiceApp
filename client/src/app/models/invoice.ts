@@ -26,3 +26,37 @@ export interface InvoiceParams{
   pageNumber:number;
   pageSize:number;
 }
+
+export interface CreateInvoice {
+  existingCustomer: boolean;
+  customerId?: string;
+  customer?: {
+    fullName: string;
+    company: string;
+    email: string;
+    phone: string;
+  };
+  items: {
+    name: string;
+    quantity: number;
+    amount: number;
+  }[];
+}
+
+export interface UpdateInvoice {
+  id:string;
+  existingCustomer: boolean;
+  customerId?: string;
+  customer?: {
+    fullName: string;
+    company: string;
+    email: string;
+    phone: string;
+  };
+  items: {
+    name: string;
+    quantity: number;
+    amount: number;
+  }[];
+  invoiceStatus:string;
+}

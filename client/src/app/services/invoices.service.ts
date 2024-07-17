@@ -1,6 +1,6 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Invoice, InvoiceParams } from '../models/invoice';
+import { CreateInvoice, Invoice, InvoiceParams, UpdateInvoice } from '../models/invoice';
 import { map, Observable } from 'rxjs';
 import { MetaData, Paginatedresponse } from '../models/pagination';
 
@@ -31,6 +31,16 @@ export class InvoicesService {
         })
       );
   }
+  getInvoiceById(id: string): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/invoices/${id}`);
+  }
+  createInvoice(invoice:CreateInvoice):Observable<any>{
+    return this.http.post<any>(`${this.baseUrl}/invoices`,invoice);
+  }
+  updateInvoice(invoice: UpdateInvoice): Observable<any> {
+    return this.http.put<any>(`${this.baseUrl}/invoices/${invoice.id}`, invoice);
+  }
+
   trackByInvoiceId(index: number, invoice: Invoice): string {
     return invoice.id;
   }

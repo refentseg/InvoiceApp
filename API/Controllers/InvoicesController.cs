@@ -157,22 +157,13 @@ namespace API.Controllers
                 //  the new customer to the context
                 _context.Customers.Add(customer);
             }
-
-            var currentUser = await _userManager.GetUserAsync(User);
-            if (currentUser == null)
-            {
-                return Unauthorized(new ProblemDetails { Title = "Unable to identify the current user" });
-            }
-
-            string salesRepFullName = $"{currentUser.FirstName} {currentUser.LastName}".Trim();
-
             var subtotal = invoiceItems.Sum(item => item.Amount * item.Quantity);
 
                     var invoice = new Invoice
                     {
                         Id =  await GenerateCustomId(),
                         Items = invoiceItems,
-                        SalesRep = salesRepFullName,
+                        SalesRep = User.Identity.Name,
                         CustomerId = customer.Id,
                         Customer = customer,
                         Subtotal = subtotal
@@ -198,7 +189,7 @@ namespace API.Controllers
             return StatusCode(500, ex.Message);
         }
     }
-    [HttpDelete]
+    [HttpDelete("{id}",Name ="Delete Invoice")]
     public async Task<ActionResult> DeleteInvoice(string id)
     {
         var invoice = await _context.Invoices.FindAsync(id);
@@ -213,8 +204,8 @@ namespace API.Controllers
         return NoContent();
     }
 
-    [HttpPut(Name = "UpdateInvoice")]
-    public async Task<ActionResult<Invoice>> UpdateInvoice(UpdateInvoiceDto updateDto)
+    [HttpPut("{id}",Name = "UpdateInvoice")]
+    public async Task<ActionResult<Invoice>> UpdateInvoice(string id,UpdateInvoiceDto updateDto)
     {
         try
         {
@@ -223,7 +214,7 @@ namespace API.Controllers
             // Retrieve the selected invoice
             var invoice = await _context.Invoices
                 .Include(i => i.Items)
-                .FirstOrDefaultAsync(i => i.Id == updateDto.Id);
+                .FirstOrDefaultAsync(i => i.Id == id);
 
             if (invoice == null)
             {
@@ -252,12 +243,32 @@ namespace API.Controllers
                 _context.Customers.Add(customer);
             }
 
-            var invoiceItems = updateDto.Items.Select(itemDto => new InvoiceItem
-            {
-                Name = itemDto.Name,
-                Amount = itemDto.Amount,
-                Quantity = itemDto.Quantity
-            }).ToList();
+            var updatedItems = new List<InvoiceItem>();
+                foreach (var itemDto in updateDto.Items)
+                {
+                    var existingItem = invoice.Items.FirstOrDefault(i => i.Id == itemDto.Id);
+                    if (existingItem != null)
+                    {
+                        // Update existing item
+                        existingItem.Name = itemDto.Name;
+                        existingItem.Amount = itemDto.Amount;
+                        existingItem.Quantity = itemDto.Quantity;
+                        updatedItems.Add(existingItem);
+                    }
+                    else
+                    {
+                        // Add new item
+                        var newItem = new InvoiceItem
+                        {
+                            Name = itemDto.Name,
+                            Amount = itemDto.Amount,
+                            Quantity = itemDto.Quantity
+                        };
+                        updatedItems.Add(newItem);
+                    }
+                }
+
+                invoice.Items = updatedItems;
 
             if (!Enum.TryParse<InvoiceStatus>(updateDto.Status, true, out var invoiceStatus) ||
             !EnumHelper.GetEnumValues<InvoiceStatus>().Contains(updateDto.Status))
@@ -268,7 +279,6 @@ namespace API.Controllers
             // Update invoice details
             invoice.CustomerId = customer.Id;
             invoice.Customer = customer;
-            invoice.Items = invoiceItems;
             invoice.InvoiceStatus = invoiceStatus;
 
             var subtotal = invoice.Items.Sum(item => item.Amount * item.Quantity);

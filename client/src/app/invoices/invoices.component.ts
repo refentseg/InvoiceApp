@@ -9,7 +9,7 @@ import { MetaData } from '../models/pagination';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtInterceptorService } from '../auth/jwt-interceptor.service';
 import { AuthService } from '../auth/auth.service';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-invoices',
@@ -33,7 +33,7 @@ export class InvoicesComponent implements OnInit{
 
   constructor(
     private invoiceService: InvoicesService,
-    private authService: AuthService
+    private router : Router
   ) {}
 
   ngOnInit():void {
@@ -72,6 +72,9 @@ export class InvoicesComponent implements OnInit{
     const formattedDate = Intl.DateTimeFormat('en-ZA', options).format(dateObject);
 
     return formattedDate;
+  }
+  editInvoice(id: string) {
+    this.router.navigate(['/invoices', id, 'edit']);
   }
 
 

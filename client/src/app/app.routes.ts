@@ -6,6 +6,7 @@ import { CustomerComponent } from './customer/customer.component';
 import { LoginComponent } from './auth/login/login.component';
 import { AuthGuardService } from './guards/auth-guard.service';
 import { InvoiceCreateComponent } from './invoices/create/create.component';
+import { InvoiceEditComponent } from './invoices/edit/edit.component';
 
 export const routes: Routes = [
   {
@@ -30,6 +31,12 @@ export const routes: Routes = [
     path:'invoice/create',
     component: InvoiceCreateComponent,
     title:'Invoice App | Create Invoice',
+    canActivate: [AuthGuardService]
+  },
+  {
+    path:'invoices/:id/edit',
+    component: InvoiceEditComponent,
+    title:'Invoice App | Edit Invoice',
     canActivate: [AuthGuardService]
   },
   {

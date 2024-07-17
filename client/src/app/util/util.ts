@@ -11,7 +11,6 @@ const formatInvoiceDate = (dateString:string|Date) => {
 	const options: Intl.DateTimeFormatOptions = { day: 'numeric', month: 'short', year: 'numeric' };
 	const formattedDate = Intl.DateTimeFormat('en-ZA', options).format(new Date(dateString));
 
-
     return formattedDate;
   };
   export const formatter = new Intl.NumberFormat("en-ZA",{

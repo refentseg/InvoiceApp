@@ -9,13 +9,12 @@ namespace API.DTO
 {
     public class UpdateInvoiceDto
     {
-        public string Id{get;set;}
-        public Customer Customer {get;set;}
-
-        public List<InvoiceItemDto> Items {get;set;} 
+        public bool ExistingCustomer { get; set; }
+        public CustomerDto Customer {get;set;}
 
         public int CustomerId { get; set; }
-        public bool ExistingCustomer { get; set; }
+
+        public List<InvoiceItemDto> Items {get;set;} 
         public string Status {get;set;}
     }
 }
