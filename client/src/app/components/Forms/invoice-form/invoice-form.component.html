@@ -63,6 +63,7 @@
     <h3 class="text-lg font-semibold mb-2 text-gray-800">Invoice Items</h3>
     <div *ngFor="let item of items.controls; let i = index" [formGroupName]="i" class="bg-gray-50 p-4 rounded-md mb-4">
       <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <input type="hidden" formControlName="id">
         <div>
           <label [for]="'itemName' + i" class="block text-sm font-medium text-gray-700">Name</label>
           <input
@@ -105,7 +106,14 @@
   <div>
     <label for="status">Status:</label>
     <select id="status" formControlName="status" class="mt-1 p-2 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50">
-      <option *ngFor="let status of invoiceStatuses" [value]="status">{{status}}</option>
+      <option value="Pending">Pending</option>
+      <option value="Approved">Approved</option>
+      <option value="Sent">Sent</option>
+      <option value="Rejected">Rejected</option>
+      <option value="DepositPaid">Deposit Paid</option>
+      <option value="Completed">Completed</option>
+      <option value="Paid">Paid</option>
+      <option value="Overdue">Overdue</option>
     </select>
   </div>
 

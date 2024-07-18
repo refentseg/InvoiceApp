@@ -289,7 +289,14 @@ namespace API.Controllers
 
             transaction.Commit();
 
-            return Ok(invoice);
+            return Ok(new
+        {
+            invoice.Id,
+            invoice.CustomerId,
+            Items = invoice.Items.Select(i => new { i.Id, i.Name, i.Amount, i.Quantity }),
+            invoice.InvoiceStatus,
+            invoice.Subtotal
+        });
         }
         catch (Exception ex)
         {

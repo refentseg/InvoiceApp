@@ -54,9 +54,10 @@ export interface UpdateInvoice {
     phone: string;
   };
   items: {
+    id: number;
     name: string;
     quantity: number;
     amount: number;
   }[];
-  invoiceStatus:string;
+  status:string;
 }

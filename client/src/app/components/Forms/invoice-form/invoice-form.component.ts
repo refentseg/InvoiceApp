@@ -39,7 +39,6 @@ export class InvoiceFormComponent {
   invoice: CreateInvoice | null = null;
   invoiceForm: FormGroup = new FormGroup({});
   currentInvoiceId: string | null = null;
-  invoiceStatuses = ['Pending', 'Approved','Sent','Rejected','DepositPaid', 'Completed', 'Paid', 'Overdue'];
   isSubmitting = false;
 
   constructor(private fb: FormBuilder, private invoicesService:InvoicesService, private toastr: ToastrService,private router: Router, private route: ActivatedRoute)
@@ -54,7 +53,7 @@ export class InvoiceFormComponent {
         phone: ['']
       }),
       items: this.fb.array([]),
-      status: ['Pending', Validators.required]
+      status: ['']
     });
   }
 
@@ -81,7 +80,7 @@ export class InvoiceFormComponent {
         phone: ['', Validators.required]
       }),
       items: this.fb.array([this.createItem()]),
-      status: ['Pending']
+      status: ['']
     });
 
     this.onExistingCustomerChange();
@@ -100,6 +99,7 @@ export class InvoiceFormComponent {
 
   createItem(): FormGroup {
     return this.fb.group({
+      id: [null],
       name: ['', Validators.required],
       quantity: [1, [Validators.required, Validators.min(1)]],
       amount: [0, [Validators.required, Validators.min(0)]]
@@ -157,7 +157,7 @@ getAmount(index: number): FormControl {
         customerId: formValue.existingCustomer ? formValue.customerId : undefined,
         customer: formValue.existingCustomer ? undefined : formValue.customer,
         items: formValue.items,
-        invoiceStatus: formValue.status
+        status: formValue.status
       };
 
       const action = this.mode === 'create'
@@ -176,6 +176,30 @@ getAmount(index: number): FormControl {
         },
         error =>{
           console.error(`Error ${this.mode === 'create' ? 'creating' : 'updating'} invoice:`, error);
+
+          let errorMessage = `An error occurred while ${this.mode === 'create' ? 'creating' : 'updating'} the invoice.`;
+
+          if (error.status === 400) {
+            if (error.error && error.error.title === "Invalid invoice status") {
+              errorMessage = 'The invoice status you provided is invalid. Please select a valid status and try again.';
+              // Optionally, you could highlight the status field in the form
+              this.invoiceForm.get('status')?.setErrors({'invalidStatus': true});
+            } else {
+              errorMessage = 'Invalid data submitted. Please check your inputs and try again.';
+            }
+          } else if (error.status === 401) {
+            errorMessage = 'You are not authorized to perform this action. Please log in and try again.';
+            this.router.navigate(['/login']);
+          } else if (error.status === 403) {
+            errorMessage = 'You do not have permission to perform this action.';
+          } else if (error.status === 404) {
+            errorMessage = 'The requested resource was not found. Please refresh and try again.';
+          } else if (error.status === 500) {
+            errorMessage = 'A server error occurred. Please try again later or contact support.';
+          }
+
+          this.toastr.error(errorMessage);
+
         }
       );
     }
@@ -189,14 +213,15 @@ getAmount(index: number): FormControl {
       customerId: invoice.customerId,
       customer: invoice.customer,
       items: invoice.items,
-      status:invoice.invoiceStatus
+      status:invoice.status
     });
-    this.items.clear();
-    invoice.items.forEach(item => this.items.push(this.fb.group({
-    name: [item.name, Validators.required],
-    quantity: [item.quantity, [Validators.required, Validators.min(1)]],
-    amount: [item.amount, [Validators.required, Validators.min(0)]]
-  })));
+
+    this.invoiceForm.setControl('items', this.fb.array(invoice.items.map(item => this.fb.group({
+      id: [item.id],
+      name: [item.name, Validators.required],
+      quantity: [item.quantity, [Validators.required, Validators.min(1)]],
+      amount: [item.amount, [Validators.required, Validators.min(0)]]
+    }))));
   }
 
   resetForm() {
