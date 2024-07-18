@@ -10,6 +10,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtInterceptorService } from '../auth/jwt-interceptor.service';
 import { AuthService } from '../auth/auth.service';
 import { Router, RouterModule } from '@angular/router';
+import { currencyFormat } from '../util/util';
 
 @Component({
   selector: 'app-invoices',
@@ -26,7 +27,7 @@ export class InvoicesComponent implements OnInit{
     orderBy: 'orderDate',
     searchTerm: '',
     pageNumber: 1,
-    pageSize: 10
+    pageSize: 5
   };
   paginationMetaData!: MetaData;
 
@@ -58,6 +59,20 @@ export class InvoicesComponent implements OnInit{
     );
   }
 
+  onPageChange(pageNumber: number) {
+    this.invoiceParams.pageNumber = pageNumber;
+    this.loadInvoices();
+  }
+
+  getPageNumbers(): number[] {
+    const totalPages = this.paginationMetaData.totalPages;
+    const pageNumbers: number[] = [];
+    for (let i = 1; i <= totalPages; i++) {
+      pageNumbers.push(i);
+    }
+    return pageNumbers;
+  }
+
 
   formatInvoiceDate(dateString: string | Date): string {
     const dateObject = dateString instanceof Date ? dateString : new Date(dateString);
@@ -75,6 +90,10 @@ export class InvoicesComponent implements OnInit{
   }
   editInvoice(id: string) {
     this.router.navigate(['/invoices', id, 'edit']);
+  }
+
+  currencyFormat(amount: number): string {
+    return currencyFormat(amount);
   }
 
 
