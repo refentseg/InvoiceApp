@@ -63,7 +63,6 @@
     <h3 class="text-lg font-semibold mb-2 text-gray-800">Invoice Items</h3>
     <div *ngFor="let item of items.controls; let i = index" [formGroupName]="i" class="bg-gray-50 p-4 rounded-md mb-4">
       <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <input type="hidden" formControlName="id">
         <div>
           <label [for]="'itemName' + i" class="block text-sm font-medium text-gray-700">Name</label>
           <input

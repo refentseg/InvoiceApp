@@ -1,9 +1,9 @@
 import { Customer } from "./customer";
 
 export interface InvoiceItem{
-  productId: number;
-  name:number;
-  price:number;
+  id?: number;
+  name:string;
+  amount:number;
   quantity:number;
 }
 
@@ -54,7 +54,7 @@ export interface UpdateInvoice {
     phone: string;
   };
   items: {
-    id: number;
+    id?: number;
     name: string;
     quantity: number;
     amount: number;

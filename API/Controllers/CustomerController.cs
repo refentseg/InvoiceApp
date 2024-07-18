@@ -68,5 +68,21 @@ namespace API.Controllers
         // Returning 201 Created status along with the created customer
         return CreatedAtRoute("GetCustomer", new { id = newCustomer.Id }, newCustomer);
         }
+        [HttpDelete("{id}",Name = "DeleteCustomer")]
+        public async Task<ActionResult> DeleteCustomer(int id)
+        {
+            var customer = await _context.Customers.FindAsync(id);
+            if(customer == null){
+                return NotFound();
+            }
+            _context.Customers.Remove(customer);
+            await _context.SaveChangesAsync();
+            
+            return NoContent();
+        }
+        
     }
+
+    
+
 }

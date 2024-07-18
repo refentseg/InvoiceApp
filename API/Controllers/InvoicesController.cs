@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using System.Xml.Schema;
 using API.Data;
@@ -177,7 +178,7 @@ namespace API.Controllers
                     if (result > 0)
                     {
                         transaction.Commit();
-                        return CreatedAtRoute("GetInvoice", new { id = invoice.Id }, invoice.Id);
+                        return Ok(new { id = invoice.Id });
                     }
 
                     transaction.Rollback();

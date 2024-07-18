@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Invoice, UpdateInvoice } from '../../../models/invoice';
+import { Invoice, InvoiceItem, UpdateInvoice } from '../../../models/invoice';
 import { FormArray, FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
@@ -25,6 +25,13 @@ interface CreateInvoice {
     quantity: number;
     amount: number;
   }[];
+}
+
+interface InvoiceItemForm {
+  name: FormControl<string | null>;
+  quantity: FormControl<number | null>;
+  amount: FormControl<number | null>;
+  id?: FormControl<number | null>;  // Make id optional
 }
 
 @Component({
@@ -99,7 +106,6 @@ export class InvoiceFormComponent {
 
   createItem(): FormGroup {
     return this.fb.group({
-      id: [null],
       name: ['', Validators.required],
       quantity: [1, [Validators.required, Validators.min(1)]],
       amount: [0, [Validators.required, Validators.min(0)]]
@@ -167,8 +173,8 @@ getAmount(index: number): FormControl {
       action.pipe(
         finalize(() => this.isSubmitting = false)
       ).subscribe(
-        response => {
-          console.log('Invoice response:', response);
+        (response) => {
+          console.log('Invoice response:', response.invoiceId);
           const message = this.mode === 'create' ? 'Invoice created successfully' : 'Invoice updated successfully';
           this.toastr.success(message);
           this.resetForm();
@@ -205,6 +211,20 @@ getAmount(index: number): FormControl {
     }
   }
 
+  createInvoiceItemFormGroup(item: Partial<InvoiceItem>): FormGroup<InvoiceItemForm> {
+    const group = this.fb.group<InvoiceItemForm>({
+      name: this.fb.control(item.name ?? '', Validators.required),
+      quantity: this.fb.control(item.quantity ?? 0, [Validators.required, Validators.min(1)]),
+      amount: this.fb.control(item.amount ?? 0, [Validators.required, Validators.min(0)])
+    });
+
+    if (item?.id) {
+      group.addControl('id', this.fb.control(item.id));
+    }
+
+    return group;
+  }
+
   setInvoiceForEdit(invoice: UpdateInvoice) {
     this.mode = 'edit';
     this.currentInvoiceId = invoice.id;
@@ -216,12 +236,11 @@ getAmount(index: number): FormControl {
       status:invoice.status
     });
 
-    this.invoiceForm.setControl('items', this.fb.array(invoice.items.map(item => this.fb.group({
-      id: [item.id],
-      name: [item.name, Validators.required],
-      quantity: [item.quantity, [Validators.required, Validators.min(1)]],
-      amount: [item.amount, [Validators.required, Validators.min(0)]]
-    }))));
+    const itemsFormArray = this.fb.array(
+      invoice.items.map(item => this.createInvoiceItemFormGroup(item))
+    );
+
+    this.invoiceForm.setControl('items', itemsFormArray);
   }
 
   resetForm() {
