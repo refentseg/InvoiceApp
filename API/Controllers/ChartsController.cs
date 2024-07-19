@@ -6,6 +6,7 @@ using API.Data;
 using API.DTO;
 using API.Entity.InvoiceAggregate;
 using API.Extensions;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -23,23 +24,22 @@ namespace API.Controllers
         [HttpGet("total-sum")]
         public async Task<long> GetInvoicesSum()
         {
-            long totalSum = await _context.Invoices
-                    .Select(i => i.GetTotal())
-                    .SumAsync();
-
+            var invoices = await _context.Invoices.ToListAsync();
+            long totalSum = invoices.Select(i => i.GetTotal()).Sum();
             return totalSum;
         }
         [HttpGet("total-sum-per-month")]
         public async Task<ActionResult<IDictionary<string, long>>> GetTotalSumPerMonth()
         {
-            var totalSumPerMonth = await _context.Invoices
+            var invoices = await _context.Invoices.ToListAsync();
+            var totalSumPerMonth = invoices
                 .GroupBy(i => new { Year = i.OrderDate.Year, Month = i.OrderDate.Month })
                 .Select(g => new
                 {
                     MonthYear = $"{g.Key.Month}/{g.Key.Year}",
                     TotalSum = g.Sum(i => i.GetTotal())
                 })
-                .ToDictionaryAsync(g => g.MonthYear, g => g.TotalSum);
+                .ToDictionary(g => g.MonthYear, g => g.TotalSum);
 
             return Ok(totalSumPerMonth);
         }
@@ -48,12 +48,12 @@ namespace API.Controllers
         public async Task<ActionResult<IDictionary<string, long>>> GetTotalSumByInvoiceStatus()
         {
             var statusValues = Enum.GetValues(typeof(InvoiceStatus)).Cast<InvoiceStatus>().ToArray();
-
-            var sumByStatus = await _context.Invoices
+            var invoices = await _context.Invoices.ToListAsync();
+            var sumByStatus = invoices
                 .GroupBy(i => i.InvoiceStatus)
                 .Where(g => statusValues.Contains(g.Key))
                 .Select(g => new { Status = g.Key.ToString(), TotalSum = g.Sum(i => i.GetTotal()) })
-                .ToDictionaryAsync(g => g.Status, g => g.TotalSum);
+                .ToDictionary(g => g.Status, g => g.TotalSum);
                 
             return Ok(sumByStatus);
         }

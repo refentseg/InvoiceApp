@@ -41,7 +41,7 @@ export class InvoicesComponent implements OnInit{
     const userString = localStorage.getItem('user');
   if (userString) {
     const user = JSON.parse(userString);
-    console.log('Token from localStorage:', user.token);
+    // console.log('Token from localStorage:', user.token);
     this.loadInvoices();
   } else {
     console.log('No user found in localStorage');

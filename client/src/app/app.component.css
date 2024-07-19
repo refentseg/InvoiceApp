@@ -2,6 +2,10 @@ h1 {
   padding: 0 1rem;
 }
 
+.app-spacer {
+  flex: 1 1 auto;
+}
+
 h2 {padding: 1rem;}
 
 mat-toolbar{
