@@ -131,6 +131,10 @@ export class AppComponent {
   get isAuthenticated(): boolean {
     return this.authService.isAuthenticated();
   }
+  isMenuOpen = false;
+  toggleProfileMenu() {
+    this.isMenuOpen = !this.isMenuOpen;
+  }
 
   logout() {
     this.authService.logout();

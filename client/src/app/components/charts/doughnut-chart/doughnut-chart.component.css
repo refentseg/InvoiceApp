@@ -1,0 +1,45 @@
+.status {
+  padding: 0.3rem 0.2rem;
+  border-radius: 2rem;
+  text-align: center;
+}
+
+.Pending {
+  background-color: rgba(255, 255, 0, 0.63);
+  color: rgb(177, 177, 28);
+}
+
+.Approved {
+  background-color: green;
+  color: white;
+}
+
+.Sent {
+  background-color: blue;
+  color: white;
+}
+
+.Rejected {
+  background-color: red;
+  color: white;
+}
+
+.DepositPaid {
+  background-color: orange;
+  color: white;
+}
+
+.Completed {
+  background-color: purple;
+  color: white;
+}
+
+.Paid {
+  background-color: darkgreen;
+  color: white;
+}
+
+.Overdue {
+  background-color: brown;
+  color: white;
+}

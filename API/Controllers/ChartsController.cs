@@ -25,7 +25,7 @@ namespace API.Controllers
         public async Task<long> GetInvoicesSum()
         {
             var invoices = await _context.Invoices.ToListAsync();
-            long totalSum = invoices.Select(i => i.GetTotal()).Sum();
+            long totalSum = invoices.Select(i => i.GetTotal()/100).Sum();
             return totalSum;
         }
         [HttpGet("total-sum-per-month")]
@@ -37,7 +37,7 @@ namespace API.Controllers
                 .Select(g => new
                 {
                     MonthYear = $"{g.Key.Month}/{g.Key.Year}",
-                    TotalSum = g.Sum(i => i.GetTotal())
+                    TotalSum = g.Sum(i => i.GetTotal()/100)
                 })
                 .ToDictionary(g => g.MonthYear, g => g.TotalSum);
 
@@ -52,7 +52,7 @@ namespace API.Controllers
             var sumByStatus = invoices
                 .GroupBy(i => i.InvoiceStatus)
                 .Where(g => statusValues.Contains(g.Key))
-                .Select(g => new { Status = g.Key.ToString(), TotalSum = g.Sum(i => i.GetTotal()) })
+                .Select(g => new { Status = g.Key.ToString(), TotalSum = g.Sum(i => i.GetTotal()/100) })
                 .ToDictionary(g => g.Status, g => g.TotalSum);
                 
             return Ok(sumByStatus);

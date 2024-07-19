@@ -20,6 +20,45 @@
           </button>
         </div>
       </div> -->
+      <nav class="relative flex justify-end items-center w-auto h-8 text-white  bg-purple-500 backdrop-filter backdrop-blur-lg bg-opacity-30 p-5 rounded mr-[20px]" *ngIf="user">
+
+        <div (click)="toggleProfileMenu()" class="profile relative flex justify-center items-center gap-2.5 cursor-pointer">
+
+            <div class="text-end font-semibold leading-[1em] text-[#fff]">
+
+                <h3>{{user.firstName}} {{user.lastName}}</h3>
+
+            </div>
+
+            <!-- <div class="relative w-[50px] h-[50px] bg-gradient-to-tl from-blue-100 via-violet-700 to-sky-800 overflow-hidden rounded-[50%]"></div> -->
+            <img class="h-10 w-10 rounded-full cursor-pointer" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" />
+
+        </div>
+
+        <div [ngClass]="{'opacity-0 invisible': !isMenuOpen, 'opacity-100 visible': isMenuOpen}" class="menu absolute w-[200px] min-h-[100px] bg-white shadow-[0_50px_50px_rgba(0,0,0,0.1)] transition-[0.5s] right-0 top-[calc(100%_+_30px)] before:content-[''] before:absolute before:w-5 before:h-5 before:bg-white before:rotate-45 before:right-[35px] before:-top-2 list-none">
+
+            <ul class="relative flex flex-col bg-white z-10 text-sm">
+                <li class="transition-[0.5s] px-5 py-[15px] hover:bg-neutral-100 hover:transition-[0s] list-none">
+                    <a href="#" class="flex items-center gap-2.5 no-underline text-[#555]">
+                      <lucide-icon name="user"></lucide-icon> Profile
+                  </a>
+                </li>
+                <li class="transition-[0.5s] px-5 py-[15px] hover:bg-neutral-100 hover:transition-[0s] list-none">
+                    <a href="#" class="flex items-center gap-2.5 no-underline text-[#555]">
+                      <lucide-icon name="settings"></lucide-icon>Settings
+                    </a>
+                </li>
+                <li class="cursor-pointer transition-[0.5s] px-5 py-[15px] hover:bg-red-600 hover:text-white hover:transition-[0s] list-none border-t">
+                    <a (click)="logout()" class="flex items-center gap-2.5 no-underline text-[#555] hover:text-white hover:transition-[0s]">
+                      <lucide-icon name="log-out"></lucide-icon>Logout
+                    </a>
+                </li>
+
+            </ul>
+
+        </div>
+
+    </nav>
     </div>
   </mat-toolbar>
   <mat-sidenav-container autosize>
@@ -47,10 +86,9 @@
     <ng-template #registerMode>
       <app-register></app-register>
     </ng-template>
-    <p>
-      {{ isLoginMode ? 'Need an account?' : 'Already have an account?' }}
-      <a (click)="toggleMode()">{{ isLoginMode ? 'Register' : 'Login' }}</a>
-    </p>
+    <div>
+      <a (click)="toggleMode()"class="cursor-pointer underline text-blue-700">{{ isLoginMode ? 'Dont have an account? Register' : 'Already have an account? Login' }}</a>
+    </div>
   </div>
 </ng-container>
 

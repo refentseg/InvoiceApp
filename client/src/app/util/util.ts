@@ -23,3 +23,14 @@ export function currencyFormat(amount:number){
     const formattedAmount = formatter.format(amount / 100);
     return formattedAmount
 }
+
+export const statusColors: { [key: string]: string } = {
+  Pending: 'rgba(255, 255, 0, 0.63)',
+  Approved: 'green',
+  Sent: 'blue',
+  Rejected: 'red',
+  DepositPaid: 'orange',
+  Completed: 'purple',
+  Paid: 'darkgreen',
+  Overdue: 'brown'
+};
