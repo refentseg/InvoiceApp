@@ -10,14 +10,16 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { BrowserAnimationsModule, provideAnimations } from '@angular/platform-browser/animations';
 import {MatListModule} from '@angular/material/list';
 import { BreakpointObserver } from '@angular/cdk/layout';
-import { LucideAngularModule, Archive, User } from 'lucide-angular';
+import { LucideAngularModule, Archive } from 'lucide-angular';
 import { NavItemComponent } from './components/nav-item/nav-item.component';
-import { filter, Subject, takeUntil } from 'rxjs';
+import { filter, Subject, Subscription, takeUntil } from 'rxjs';
 import { AuthGuardService } from './guards/auth-guard.service';
 import { JwtInterceptorService } from './auth/jwt-interceptor.service';
 import { provideToastr, ToastrModule } from 'ngx-toastr';
 import { AuthService } from './auth/auth.service';
 import { LoginComponent } from './auth/login/login.component';
+import { RegisterComponent } from './auth/register/register.component';
+import { User } from './models/user';
 
 interface DashLink {
   icon: string;
@@ -38,7 +40,7 @@ interface DashLink {
     MatListModule,
     NavItemComponent,
     NgClass, RouterLink,
-    LucideAngularModule,LoginComponent],
+    LucideAngularModule,LoginComponent,RegisterComponent],
   templateUrl: './app.component.html',
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptorService, multi: true }],
@@ -52,14 +54,19 @@ export class AppComponent {
     { icon: 'archive', path: '/invoices', title: 'Invoices',active:false  },
     { icon: 'user', path: '/customers', title: 'Customers',active:false  },
   ];
+  private userSubscription?: Subscription;
+  user: User | null = null;
 
   dashlinksWithActive: DashLink[] = [];
 
   @ViewChild(MatSidenav)
   sidenav!: MatSidenav;
   isMobile= true;
+  isLoginMode = true;
 
-
+  toggleMode() {
+    this.isLoginMode = !this.isLoginMode;
+  }
   constructor(private observer: BreakpointObserver,private router: Router,private authService: AuthService) {}
 
   ngOnInit() {
@@ -79,6 +86,14 @@ export class AppComponent {
         this.updateActiveLink(event.urlAfterRedirects);
       }
     });
+
+    this.userSubscription = this.authService.user$?.subscribe(user => {
+      this.user = user;
+    });
+
+    if (!this.user) {
+      this.loadCurrentUser();
+    }
   }
   isCollapsed = true;
   expanded = true;
@@ -89,7 +104,17 @@ export class AppComponent {
       active: currentPath.startsWith(link.path) && (link.path !== '/' || currentPath === '/')
     }));
   }
-
+  loadCurrentUser() {
+    this.authService.getCurrentUser().subscribe({
+      next: (user) => {
+        localStorage.setItem('user', JSON.stringify(user));
+        this.authService['_user'].next(user);
+      },
+      error: (error) => {
+        console.error('Error fetching current user:', error);
+      }
+    });
+  }
 
 
   toggleMenu() {
@@ -105,5 +130,9 @@ export class AppComponent {
   }
   get isAuthenticated(): boolean {
     return this.authService.isAuthenticated();
+  }
+
+  logout() {
+    this.authService.logout();
   }
 }

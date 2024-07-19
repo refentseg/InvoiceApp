@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace API.RequestHelpers
 {
-    public class CustomerParams
+    public class CustomerParams:PaginationParams
     {
         public string SearchTerm{get;set;} ="";
 

@@ -22,7 +22,7 @@ export class AuthService {
   }
 
   login(userDetails: { username: string; password: string }): Observable<User> {
-    return this.http.post<any>('http://localhost:5000/api/account/login', userDetails)
+    return this.http.post<any>(`${this.baseUrl}/login`, userDetails)
       .pipe(
         map(user => {
           localStorage.setItem('user',JSON.stringify(user));
@@ -30,6 +30,10 @@ export class AuthService {
           return user;
         })
       );
+  }
+
+  getCurrentUser(): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/currentUser`);
   }
 
   logout(): void {

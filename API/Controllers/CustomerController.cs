@@ -24,14 +24,14 @@ namespace API.Controllers
         }
         [HttpGet(Name ="GetCustomers")]
 
-        public async Task<ActionResult<List<CustomerDto>>> GetCustomers([FromQuery]CustomerParams customerParams)
+        public async Task<ActionResult<PagedList<CustomerDto>>> GetCustomers([FromQuery]CustomerParams customerParams)
         {
             var query = _context.Customers
                 .Sort(customerParams.OrderBy)
                 .Search(customerParams.SearchTerm)
                 .AsQueryable();  
             
-            List<CustomerDto> customers = await query.ProjectCustomerToCustomerDto().ToListAsync();
+            var customers = await PagedList<CustomerDto>.ToPagedList(query.ProjectCustomerToCustomerDto(),customerParams.PageNumber,customerParams.PageSize);
             return customers;
         }
 

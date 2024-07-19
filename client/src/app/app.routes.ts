@@ -7,6 +7,8 @@ import { LoginComponent } from './auth/login/login.component';
 import { AuthGuardService } from './guards/auth-guard.service';
 import { InvoiceCreateComponent } from './invoices/create/create.component';
 import { InvoiceEditComponent } from './invoices/edit/edit.component';
+import { CustomerCreateComponent } from './customer/create/create.component';
+import { CustomerEditComponent } from './customer/edit/edit.component';
 
 export const routes: Routes = [
   {
@@ -25,6 +27,18 @@ export const routes: Routes = [
     path:'customers',
     component: CustomerComponent,
     title:'Invoice App | Customers',
+    canActivate: [AuthGuardService]
+  },
+  {
+    path:'customer/create',
+    component: CustomerCreateComponent,
+    title:'Invoice App | Create Customers',
+    canActivate: [AuthGuardService]
+  },
+  {
+    path:'customer/:id/edit',
+    component: CustomerEditComponent,
+    title:'Invoice App | Edit Customers',
     canActivate: [AuthGuardService]
   },
   {

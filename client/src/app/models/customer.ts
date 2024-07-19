@@ -11,6 +11,7 @@ export interface Customer{
 
 export interface CustomerParams{
     orderBy:string;
-    searchTerm?:string
-
+    searchTerm?:string;
+    pageNumber:number;
+    pageSize:number;
 }

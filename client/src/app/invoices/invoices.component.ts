@@ -1,7 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { InvoicesService } from '../services/invoices.service';
 import { Invoice, InvoiceParams } from '../models/invoice';
-import { FormControl } from '@angular/forms';
+import { FormControl, FormsModule } from '@angular/forms';
 import { AsyncPipe, CommonModule, NgFor } from '@angular/common';
 import { map, Observable } from 'rxjs';
 import { ButtonComponent } from '../components/button/button.component';
@@ -15,7 +15,7 @@ import { currencyFormat } from '../util/util';
 @Component({
   selector: 'app-invoices',
   standalone: true,
-  imports: [CommonModule,AsyncPipe,ButtonComponent,RouterModule],
+  imports: [CommonModule,AsyncPipe,ButtonComponent,RouterModule,FormsModule],
   templateUrl: './invoices.component.html',
   providers:[],
   styleUrl: './invoices.component.css'
@@ -57,6 +57,17 @@ export class InvoicesComponent implements OnInit{
         return response.items;
       })
     );
+  }
+
+  searchInvoices() {
+    // Reset pagination to first page when searching
+    this.invoiceParams.pageNumber = 1;
+    this.loadInvoices();
+  }
+
+  onSearchTermChange(term: string): void {
+    this.invoiceParams.searchTerm = term;
+    this.loadInvoices();
   }
 
   onPageChange(pageNumber: number) {
