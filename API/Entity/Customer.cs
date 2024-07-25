@@ -14,7 +14,7 @@ namespace API.Entity
         
         public string FullName { get; set; } ="";
 
-        public List<Invoice> Invoices { get; set; }= [];
+        public ICollection<Invoice> Invoices { get; set; }
 
         public string Company { get; set; } ="";
 

@@ -32,6 +32,12 @@ namespace API.Data
                  .HasForeignKey(i => i.CustomerId)
                  .OnDelete(DeleteBehavior.Cascade);
 
+            builder.Entity<InvoiceItem>()
+                .HasOne(i => i.Invoice)
+                .WithMany(i => i.Items)
+                .HasForeignKey(i => i.InvoiceId)
+                .OnDelete(DeleteBehavior.Cascade);
+
             builder.Entity<Role>()
                 .HasData(
                     new Role{Id=1,Name="Member",NormalizedName="MEMBER"},

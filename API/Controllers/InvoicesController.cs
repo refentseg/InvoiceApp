@@ -193,7 +193,9 @@ namespace API.Controllers
     [HttpDelete("{id}",Name ="Delete Invoice")]
     public async Task<ActionResult> DeleteInvoice(string id)
     {
-        var invoice = await _context.Invoices.FindAsync(id);
+        var invoice = await _context.Invoices
+            .Include(i => i.Items)
+            .FirstOrDefaultAsync(i => i.Id == id);
         if (invoice == null)
         {
             return NotFound();

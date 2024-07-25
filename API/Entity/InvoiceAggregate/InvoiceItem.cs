@@ -19,5 +19,8 @@ namespace API.Entity.InvoiceAggregate
 
         public int Quantity{get;set;}
 
+        public string InvoiceId { get; set; }
+        public Invoice Invoice { get; set; }
+
     }
 }
