@@ -32,6 +32,8 @@ namespace API.Controllers
                 .AsQueryable();  
             
             var customers = await PagedList<CustomerDto>.ToPagedList(query.ProjectCustomerToCustomerDto(),customerParams.PageNumber,customerParams.PageSize);
+
+            Response.AddPaginationHeader(customers.MetaData);
             return customers;
         }
 

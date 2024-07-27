@@ -232,7 +232,8 @@ namespace API.Data.Migrations
                         name: "FK_InvoiceItems_Invoices_InvoiceId",
                         column: x => x.InvoiceId,
                         principalTable: "Invoices",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.InsertData(

@@ -28,6 +28,8 @@ namespace API.Extensions
             if(string.IsNullOrWhiteSpace(orderBy)) return query.OrderBy(c =>c.Id);//Alphabetical method
             query = orderBy switch
             {
+                "name" => query.OrderBy(c => c.FullName),
+                "nameDesc" => query.OrderByDescending(c => c.FullName),
                 _ => query.OrderBy(c=>c.Id)
             };
             return query;

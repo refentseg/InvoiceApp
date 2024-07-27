@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API.Data.Migrations
 {
     [DbContext(typeof(InvoiceContext))]
-    [Migration("20240718090519_IntialCreate")]
+    [Migration("20240727124845_IntialCreate")]
     partial class IntialCreate
     {
         /// <inheritdoc />
@@ -336,9 +336,12 @@ namespace API.Data.Migrations
 
             modelBuilder.Entity("API.Entity.InvoiceAggregate.InvoiceItem", b =>
                 {
-                    b.HasOne("API.Entity.InvoiceAggregate.Invoice", null)
+                    b.HasOne("API.Entity.InvoiceAggregate.Invoice", "Invoice")
                         .WithMany("Items")
-                        .HasForeignKey("InvoiceId");
+                        .HasForeignKey("InvoiceId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.Navigation("Invoice");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>

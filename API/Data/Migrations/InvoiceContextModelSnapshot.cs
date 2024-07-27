@@ -333,9 +333,12 @@ namespace API.Data.Migrations
 
             modelBuilder.Entity("API.Entity.InvoiceAggregate.InvoiceItem", b =>
                 {
-                    b.HasOne("API.Entity.InvoiceAggregate.Invoice", null)
+                    b.HasOne("API.Entity.InvoiceAggregate.Invoice", "Invoice")
                         .WithMany("Items")
-                        .HasForeignKey("InvoiceId");
+                        .HasForeignKey("InvoiceId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.Navigation("Invoice");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>
