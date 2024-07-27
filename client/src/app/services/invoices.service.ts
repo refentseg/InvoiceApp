@@ -41,7 +41,8 @@ export class InvoicesService {
     return this.http.put<any>(`${this.baseUrl}/invoices/${invoice.id}`, invoice);
   }
 
-  trackByInvoiceId(index: number, invoice: Invoice): string {
-    return invoice.id;
+  deleteInvoice(id:string){
+    return this.http.delete<any>(`${this.baseUrl}/invoices/${id}`)
   }
+
 }

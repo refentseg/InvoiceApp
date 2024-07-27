@@ -18,7 +18,7 @@ import { FormsModule } from '@angular/forms';
 export class CustomerComponent implements OnInit {
   customers$!:Observable<Customer[]>;
   customerParams: CustomerParams = {
-    orderBy:'',
+    orderBy:'id',
     searchTerm:'',
     pageNumber: 1,
     pageSize: 5
@@ -37,7 +37,7 @@ export class CustomerComponent implements OnInit {
         this.paginationMetaData = response.metaData;
         return response.items;
       })
-    );;
+    );
   }
 
   searchCustomer(){
@@ -45,7 +45,7 @@ export class CustomerComponent implements OnInit {
     this.loadCustomers();
   }
 
-  onPageChange(pageNumber: number) {
+  onCustomerPageChange(pageNumber: number) {
     this.customerParams.pageNumber = pageNumber;
     this.loadCustomers();
   }

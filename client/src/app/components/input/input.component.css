@@ -9,10 +9,10 @@
   outline: none;
   border-color: #4a5568;
 }
-.form-input.error {
+.input-error {
   border-color: #e53e3e;
 }
-.error-message {
+.alert {
   color: #e53e3e;
   font-size: 0.875rem;
   margin-top: 0.25rem;

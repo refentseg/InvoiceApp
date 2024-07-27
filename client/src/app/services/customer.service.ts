@@ -28,4 +28,7 @@ export class CustomerService {
         })
       )
   }
+  deleteCustomer(id:string){
+    return this.http.delete<any>(`${this.baseUrl}/customer/${id}`)
+  }
 }

@@ -11,6 +11,9 @@ import { JwtInterceptorService } from '../auth/jwt-interceptor.service';
 import { AuthService } from '../auth/auth.service';
 import { Router, RouterModule } from '@angular/router';
 import { currencyFormat } from '../util/util';
+import { ConfirmDialogComponent } from '../components/confirm-dialog/confirm-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-invoices',
@@ -34,7 +37,9 @@ export class InvoicesComponent implements OnInit{
 
   constructor(
     private invoiceService: InvoicesService,
-    private router : Router
+    private router : Router,
+    private dialog: MatDialog,
+    private toastr: ToastrService
   ) {}
 
   ngOnInit():void {
@@ -84,6 +89,28 @@ export class InvoicesComponent implements OnInit{
     return pageNumbers;
   }
 
+  editInvoice(id: string) {
+    this.router.navigate(['/invoices', id, 'edit']);
+  }
+
+  deleteInvoice(id:string){
+    const dialogRef = this.dialog.open(ConfirmDialogComponent);
+    dialogRef.afterClosed().subscribe(result =>{
+      if(result){
+        this.invoiceService.deleteInvoice(id).subscribe(
+          () =>{
+            this.toastr.success('Deletion successfull')
+          },
+          error =>{
+            this.toastr.error('Cant delete invoice')
+            console.log(error);
+          }
+        )
+      }
+    })
+
+  }
+
 
   formatInvoiceDate(dateString: string | Date): string {
     const dateObject = dateString instanceof Date ? dateString : new Date(dateString);
@@ -99,15 +126,9 @@ export class InvoicesComponent implements OnInit{
 
     return formattedDate;
   }
-  editInvoice(id: string) {
-    this.router.navigate(['/invoices', id, 'edit']);
-  }
 
   currencyFormat(amount: number): string {
     return currencyFormat(amount);
   }
-
-
-
 
 }

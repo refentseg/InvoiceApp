@@ -1,13 +1,35 @@
-<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-  <app-input
-  label="Username"
-  type="text"
-  [control]="usernameControl">
-  </app-input>
-  <app-input
-  label="Passord"
-  type="password"
-  [control]="passwordControl">
-  </app-input>
-  <button type="submit" [disabled]="loginForm.invalid">Submit</button>
-</form>
+<section class="m-8 flex gap-4">
+<div class="w-full lg:w-3/5 mt-24">
+  <div class="text-center">
+    <h2  class="font-bold mb-4 text-4xl">Sign In</h2>
+    <div color="blue-gray" class="text-lg font-normal">Enter your username and password to Sign In.</div>
+  </div>
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="mt-8 mb-2 mx-auto w-80 max-w-screen-lg lg:w-1/2">
+    <div class=" mb-1 flex flex-col gap-6">
+      <app-input
+      label="Username"
+      type="text"
+      [control]="usernameControl"
+      [zodSchema]="usernameSchema">
+      </app-input>
+      <app-input
+      label="Password"
+      type="password"
+      [control]="passwordControl"
+      [zodSchema]="passwordSchema">
+      </app-input>
+    </div>
+    <button type="submit" [disabled]="loginForm.invalid" class="w-full bg-black text-white mt-4 p-3 rounded-md">Sign In</button>
+    <div class="mt-2">
+      <a (click)="onToggleMode()" class="cursor-pointer underline text-blue-700">Don't have an account? Register</a>
+    </div>
+  </form>
+</div>
+<div class="w-2/5 h-full hidden lg:block">
+  <img
+    src="assets/imgs/login.jpg"
+    class="h-full w-full object-cover rounded-3xl"
+  />
+</div>
+</section>
+

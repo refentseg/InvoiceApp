@@ -1,6 +1,6 @@
 import { CommonModule, NgClass } from '@angular/common';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-import { Component, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, ViewChild } from '@angular/core';
 import { Event, NavigationEnd, Router, RouterLink, RouterOutlet } from '@angular/router';
 import { InvoicesComponent } from './invoices/invoices.component';
 import { MatButtonModule } from '@angular/material/button';
@@ -63,11 +63,10 @@ export class AppComponent {
   sidenav!: MatSidenav;
   isMobile= true;
   isLoginMode = true;
+  mode = 'login';
 
-  toggleMode() {
-    this.isLoginMode = !this.isLoginMode;
-  }
-  constructor(private observer: BreakpointObserver,private router: Router,private authService: AuthService) {}
+
+  constructor(private observer: BreakpointObserver,private router: Router,private authService: AuthService,private cdRef: ChangeDetectorRef) {}
 
   ngOnInit() {
     this.observer.observe(['(max-width: 800px)']).subscribe((screenSize) => {
@@ -135,8 +134,13 @@ export class AppComponent {
   toggleProfileMenu() {
     this.isMenuOpen = !this.isMenuOpen;
   }
+  toggleMode() {
+    this.isLoginMode = !this.isLoginMode;
+    this.cdRef.detectChanges();
+  }
 
   logout() {
     this.authService.logout();
+    this.isMenuOpen =!this.isMenuOpen;
   }
 }

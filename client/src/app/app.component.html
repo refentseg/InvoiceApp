@@ -81,14 +81,15 @@
 <ng-container *ngIf="!isAuthenticated">
   <div>
     <ng-container *ngIf="isLoginMode; else registerMode">
-      <app-login></app-login>
+      <app-login  (toggleMode)="toggleMode()">
+      </app-login>
     </ng-container>
     <ng-template #registerMode>
-      <app-register></app-register>
+      <app-register (toggleMode)="toggleMode()"></app-register>
     </ng-template>
-    <div>
-      <a (click)="toggleMode()"class="cursor-pointer underline text-blue-700">{{ isLoginMode ? 'Dont have an account? Register' : 'Already have an account? Login' }}</a>
-    </div>
+    <!-- <div>
+      <a (click)="toggleMode()" [ngClass]="{'flex mx-[16vw] lg:w-2/4':isLoginMode }" class="cursor-pointer underline text-blue-700">{{ isLoginMode ? 'Dont have an account? Register' : 'Already have an account? Login' }}</a>
+    </div> -->
   </div>
 </ng-container>
 

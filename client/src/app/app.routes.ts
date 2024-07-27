@@ -56,12 +56,12 @@ export const routes: Routes = [
   {
     path:'login',
     component: LoginComponent,
-    title:'Invoice App | Login'
+    title:'Invoice App | Login', outlet: 'auth'
   },
   {
     path:'register',
     component: LoginComponent,
     title:'Invoice App | Register'
   },
-  { path: '**', component: PageNotFoundComponent }
+  { path: '**', component: PageNotFoundComponent, outlet: 'auth' }
 ];

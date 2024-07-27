@@ -8,7 +8,7 @@ import { User } from '../models/user';
 })
 export class AuthService {
 
-  private baseUrl: string = 'http://localhost:5000/api'
+  private baseUrl: string = 'http://localhost:5000/api/account'
   private _user : BehaviorSubject<User | null>;
   public user$? :Observable<User |null>;
 

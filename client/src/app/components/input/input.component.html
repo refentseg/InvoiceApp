@@ -4,11 +4,12 @@
     [id]="label"
     [placeholder]="label"
     [formControl]="control"
+    [class.input-error]="control.invalid && (control.dirty || control.touched)"
     class="form-input border-t-blue-gray-200 focus:border-t-gray-900"
   >
   <div *ngIf="control.invalid && (control.dirty || control.touched)" class="alert">
-    <div *ngFor="let error of control.errors | keyvalue">
-      {{ error.value }}
+    <div *ngIf="control.errors?.['zodError']">
+      {{ control.errors?.['zodError'] }}
     </div>
   </div>
 </div>

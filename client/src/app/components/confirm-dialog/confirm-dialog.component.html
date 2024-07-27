@@ -1,0 +1,7 @@
+<h2 mat-dialog-title>Delete</h2>
+<mat-dialog-content class="text-2xl">Are you sure you want to delete?</mat-dialog-content>
+<mat-dialog-actions class="flex">
+  <button mat-button class="flex-start p-6 w-[50%] rounded-md hover:bg-slate-300" (click)="onCancel()">Cancel</button>
+  <button mat-button class="p-6 flex-end w-[50%] rounded-md hover:text-white hover:transition-[0s]
+  hover:bg-red-600" (click)="onConfirm()">Delete</button>
+</mat-dialog-actions>
