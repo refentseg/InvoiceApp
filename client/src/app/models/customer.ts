@@ -1,9 +1,9 @@
 import { Invoice } from "./invoice"
 
 export interface Customer{
-    id:number;
+    id?:number;
     fullName:string;
-    invoices:Invoice[];
+    invoices?:Invoice[];
     company:string;
     email:string;
     phone:string;

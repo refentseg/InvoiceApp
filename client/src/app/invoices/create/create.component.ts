@@ -12,9 +12,4 @@ import { InvoiceFormComponent } from '../../components/Forms/invoice-form/invoic
 export class InvoiceCreateComponent {
 
   constructor() {}
-  onInvoiceCreated(invoiceId: string) {
-    console.log('Invoice created with ID:', invoiceId);
-    // Navigate to the invoice list or the newly created invoice details
-    //this.router.navigate(['/invoices', invoiceId]);
-  }
 }

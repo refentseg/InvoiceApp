@@ -28,6 +28,15 @@ export class CustomerService {
         })
       )
   }
+  getCustomerById(id: string): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/customer/${id}`);
+  }
+  createCustomer(customer:Customer):Observable<any>{
+    return this.http.post<any>(`${this.baseUrl}/customer`,customer);
+  }
+  updateCustomer(customer:Customer):Observable<any>{
+    return this.http.put<any>(`${this.baseUrl}/customer/${customer.id}`,customer)
+  }
   deleteCustomer(id:string){
     return this.http.delete<any>(`${this.baseUrl}/customer/${id}`)
   }
