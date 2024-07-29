@@ -36,10 +36,19 @@
                 </td>
                 <td class="p-2 sm:p-3 ">{{ currencyFormat(invoice.total)}}</td>
                 <td class="p-2 sm:p-3">
-                  <div class="flex flex-col sm:flex-row space-y-1 sm:space-y-0 sm:space-x-2">
-                    <button (click)="editInvoice(invoice.id)" class="text-blue-600 hover:underline">Edit</button>
-                    <button class="text-red-600 hover:underline" (click)="deleteInvoice(invoice.id)" >Delete</button>
-                    <button class="text-green-600 hover:underline">Print</button>
+                  <div class="flex flex-col sm:flex-row space-y-1 sm:space-y-0 sm:space-x-3.5">
+                    <button
+                    data-twe-toggle="tooltip"
+                    title="Edit"
+                    (click)="editInvoice(invoice.id)" class="text-blue-600 hover:underline"><lucide-icon name="square-pen"></lucide-icon></button>
+                    <button
+                    data-twe-toggle="tooltip"
+                    title="Delete"
+                    class="text-red-600 hover:underline" (click)="deleteInvoice(invoice.id)" ><lucide-icon name="trash-2"></lucide-icon></button>
+                    <button
+                    data-twe-toggle="tooltip"
+                    title="Generate PDF"
+                    (click)="generatePDF(invoice)" class="text-green-600 hover:underline"><lucide-icon name="printer"></lucide-icon></button>
                   </div>
                 </td>
               </tr>

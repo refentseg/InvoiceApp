@@ -1,6 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { InvoicesService } from '../services/invoices.service';
-import { Invoice, InvoiceParams } from '../models/invoice';
+import { Invoice, InvoiceItem, InvoiceParams } from '../models/invoice';
 import { FormControl, FormsModule } from '@angular/forms';
 import { AsyncPipe, CommonModule, NgFor } from '@angular/common';
 import { map, Observable } from 'rxjs';
@@ -14,15 +14,26 @@ import { currencyFormat } from '../util/util';
 import { ConfirmDialogComponent } from '../components/confirm-dialog/confirm-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
+import jsPDF from 'jspdf';
+import 'jspdf-autotable';
+import { LucideAngularModule } from 'lucide-angular';
 
+declare module 'jspdf' {
+  interface jsPDF {
+    autoTable: (options: any) => void;
+    lastAutoTable: { finalY: number };
+  }
+}
 @Component({
   selector: 'app-invoices',
   standalone: true,
-  imports: [CommonModule,AsyncPipe,ButtonComponent,RouterModule,FormsModule],
+  imports: [CommonModule,AsyncPipe,ButtonComponent,RouterModule,FormsModule,LucideAngularModule],
   templateUrl: './invoices.component.html',
   providers:[],
   styleUrl: './invoices.component.css'
 })
+
+
 export class InvoicesComponent implements OnInit{
 
   invoices$!: Observable<Invoice[]>;
@@ -129,6 +140,70 @@ export class InvoicesComponent implements OnInit{
 
   currencyFormat(amount: number): string {
     return currencyFormat(amount);
+  }
+
+  generatePDF(invoice: Invoice) {
+    const doc = new jsPDF();
+
+    const pageWidth = doc.internal.pageSize.width;
+
+    // Company Name
+    doc.setFontSize(12);
+    doc.text('Company Name', 10, 10);
+
+    // Invoice Header
+    doc.setFontSize(18);
+    doc.text(`Invoice`, pageWidth / 2, 20, { align: 'center' });
+
+    // Invoice Details
+    doc.setFontSize(11);
+    doc.text(`# ${invoice.id}`, 10, 30);
+    doc.text(`Date: ${this.formatInvoiceDate(invoice.orderDate)}`, pageWidth - 10, 30, { align: 'right' });
+    doc.text(`Customer: ${invoice.customer.fullName}`, 10, 40);
+    doc.text(`Company: ${invoice.customer.company}`, 10, 45);
+    doc.text(`Email: ${invoice.customer.email}`, 10, 50);
+    doc.text(`Phone: ${invoice.customer.phone}`, 10, 55);
+    // doc.text(`Address: ${invoice.customer.address}`, 10, 45);
+
+    // Invoice Items Table
+    doc.autoTable({
+      startY: 65,
+      head: [['Item', 'Quantity', 'Amount']],
+      body: invoice.items.map((item: InvoiceItem) => [
+        item.name,
+        item.quantity.toString(),
+        currencyFormat(item.amount)
+      ]),
+      styles: { fontSize: 11 },
+      headStyles: { fillColor: [103, 58, 183], textColor: [255, 255, 255], fontStyle: 'bold' },
+      columnStyles: {
+        0: { cellWidth: 'auto' },
+        1: { cellWidth: 40 },
+        2: { cellWidth: 45 }
+      },
+      margin: { left: 10, right: 10 },
+      tableWidth: 'auto'
+    });
+
+    // Invoice Totals
+    const finalY = (doc as any).lastAutoTable.finalY + 10;
+    doc.setFontSize(12);
+    doc.setFont('helvetica', 'bold');
+
+    const rightAlign = pageWidth - 10;
+    doc.text('Subtotal:', rightAlign - 50, finalY);
+    doc.text(currencyFormat(invoice.subtotal), rightAlign, finalY, { align: 'right' });
+
+    doc.text('VAT:', rightAlign - 50, finalY + 10);
+    doc.text(currencyFormat(invoice.vat), rightAlign, finalY + 10, { align: 'right' });
+
+    doc.setFontSize(12);
+    doc.text('Total:', rightAlign - 50, finalY + 20);
+    doc.text(currencyFormat(invoice.total), rightAlign, finalY + 20, { align: 'right' });
+
+    // Save the PDF with dynamic filename
+    const filename = `#${invoice.id}.pdf`;
+    doc.save(filename);
   }
 
 }

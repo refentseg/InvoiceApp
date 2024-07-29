@@ -5,7 +5,7 @@ import { routes } from './app.routes';
 import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptors, withInterceptorsFromDi } from '@angular/common/http';
 import { FormControl, FormsModule } from '@angular/forms';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { LucideAngularModule,Archive,User, House, LogOut, Settings } from 'lucide-angular';
+import { LucideAngularModule,Archive,User, House, LogOut, Settings, Trash2, Printer, SquarePen } from 'lucide-angular';
 import { AuthGuardService } from './guards/auth-guard.service';
 import { provideToastr, ToastrModule } from 'ngx-toastr';
 import { provideAnimations } from '@angular/platform-browser/animations';
@@ -26,7 +26,7 @@ export const appConfig: ApplicationConfig = {
       multi: true
     },
      provideAnimationsAsync(),
-     importProvidersFrom(LucideAngularModule.pick({ Archive, User,House,LogOut,Settings })),
+     importProvidersFrom(LucideAngularModule.pick({ Archive, User,House,LogOut,Settings,Trash2,SquarePen,Printer })),
      provideCharts(withDefaultRegisterables())
   ]
 };

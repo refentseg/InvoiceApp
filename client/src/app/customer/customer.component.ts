@@ -7,11 +7,12 @@ import { ButtonComponent } from '../components/button/button.component';
 import { MetaData } from '../models/pagination';
 import { Router, RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { LucideAngularModule } from 'lucide-angular';
 
 @Component({
   selector: 'app-customer',
   standalone: true,
-  imports: [CommonModule,AsyncPipe,ButtonComponent,RouterModule,FormsModule],
+  imports: [CommonModule,AsyncPipe,ButtonComponent,RouterModule,FormsModule,LucideAngularModule],
   templateUrl: './customer.component.html',
   styleUrl: './customer.component.css'
 })
