@@ -8,13 +8,26 @@
 
   <ng-container *ngIf="invoiceForm.get('existingCustomer')!.value; else newCustomer">
     <div class="mb-4">
-      <label for="customerId" class="block text-sm font-medium text-gray-700">Customer ID</label>
-      <input
-        type="text"
+      <label for="customerId" class="block text-sm font-medium text-gray-700">Customer</label>
+      <ng-select
         id="customerId"
+        [items]="customers$ | async"
+        bindLabel="fullName"
+        bindValue="id"
+        [virtualScroll]="true"
+        [loading]="loading"
+        [typeahead]="customerInput$"
+        (scrollToEnd)="onScrollToEnd()"
+        placeholder=""
         formControlName="customerId"
-        class="mt-1 block p-2 w-full rounded-md border-gray-600 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+        class="mt-1 p-2 w-[40%] rounded-md border border-gray-600 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
       >
+        <ng-template ng-option-tmp let-item="item" let-search="searchTerm" class="">
+          <div class="bg-white">
+            <div [ngOptionHighlight]="search" class="flex items-center bg-white hover:bg-neutral-200 p-2 rounded-md mr-2">{{ item.fullName }}</div>
+          </div>
+        </ng-template>
+      </ng-select>
     </div>
   </ng-container>
 

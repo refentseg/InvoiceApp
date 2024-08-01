@@ -148,8 +148,7 @@ export class InvoicesComponent implements OnInit{
     const pageWidth = doc.internal.pageSize.width;
 
     // Company Name
-    doc.setFontSize(12);
-    doc.text('Company Name', 10, 10);
+    // doc.addImage(headerImageData, 'PNG', pageWidth - 10, 0, 60, 30);
 
     // Invoice Header
     doc.setFontSize(18);

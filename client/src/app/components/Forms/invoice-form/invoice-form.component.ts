@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Invoice, InvoiceItem, UpdateInvoice } from '../../../models/invoice';
 import { FormArray, FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
@@ -8,7 +8,12 @@ import { ToastrService } from 'ngx-toastr';
 import { InvoicesService } from '../../../services/invoices.service';
 import { currencyFormat } from '../../../util/util';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
-import { finalize } from 'rxjs';
+import { debounceTime, distinctUntilChanged, finalize, map, Observable, Subject, switchMap } from 'rxjs';
+import { Customer, CustomerParams } from '../../../models/customer';
+import { CustomerService } from '../../../services/customer.service';
+import { MetaData } from '../../../models/pagination';
+import { NgSelectModule } from '@ng-select/ng-select';
+import { NgOptionHighlightModule } from '@ng-select/ng-option-highlight';
 
 
 interface CreateInvoice {
@@ -37,18 +42,29 @@ interface InvoiceItemForm {
 @Component({
   selector: 'app-invoice-form',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule,InputComponent,FormsModule,RouterModule],
+  imports: [CommonModule, ReactiveFormsModule,InputComponent,FormsModule,RouterModule,NgSelectModule,NgOptionHighlightModule],
   templateUrl: './invoice-form.component.html',
   styleUrl: './invoice-form.component.css'
 })
-export class InvoiceFormComponent {
+export class InvoiceFormComponent implements OnInit{
   mode: 'create' | 'edit' = 'create';
   invoice: CreateInvoice | null = null;
   invoiceForm: FormGroup = new FormGroup({});
   currentInvoiceId: string | null = null;
   isSubmitting = false;
+  loading = false;
 
-  constructor(private fb: FormBuilder, private invoicesService:InvoicesService, private toastr: ToastrService,private router: Router, private route: ActivatedRoute)
+  customers$!: Observable<Customer[]>;
+  customerInput$ = new Subject<string>();
+  customerParams: CustomerParams = {
+    orderBy: 'name',
+    pageNumber: 1,
+    pageSize: 10,
+    searchTerm: ''
+  };
+  paginationMetaData!: MetaData;
+
+  constructor(private fb: FormBuilder, private invoicesService:InvoicesService,private customerService: CustomerService, private toastr: ToastrService,private router: Router, private route: ActivatedRoute)
   {
     this.invoiceForm = this.fb.group({
       existingCustomer: [true],
@@ -92,6 +108,18 @@ export class InvoiceFormComponent {
 
     this.onExistingCustomerChange();
 
+    this.loadCustomers();
+
+    this.customerInput$.pipe(
+      debounceTime(300),
+      distinctUntilChanged(),
+      switchMap(term => {
+        this.customerParams.searchTerm = term;
+        this.customerParams.pageNumber = 1;
+        return this.loadCustomers();
+      })
+    ).subscribe();
+
     this.route.paramMap.subscribe(params => {
       const id = params.get('id');
       if (id) {
@@ -101,6 +129,24 @@ export class InvoiceFormComponent {
         );
       }
     });
+  }
+
+  //Finding Customer
+  loadCustomers() {
+    this.loading = true;
+    this.customers$ = this.customerService.getCustomers(this.customerParams).pipe(
+      map(response => {
+        this.paginationMetaData = response.metaData;
+        this.loading = false;
+        return response.items;
+      })
+    );
+    return this.customers$;
+  }
+
+  onScrollToEnd() {
+    this.customerParams.pageNumber++;
+    this.loadCustomers().subscribe();
   }
 
 
