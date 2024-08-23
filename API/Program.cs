@@ -103,7 +103,10 @@ if (app.Environment.IsDevelopment())
 {
     app.UseCors("DevCors");
     app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwaggerUI(c => 
+    {
+        c.ConfigObject.AdditionalItems.Add("persistAuthorization", "true");
+    });
 }else{
     app.UseCors("ProdCors");
     app.UseHttpsRedirection();
@@ -111,12 +114,13 @@ if (app.Environment.IsDevelopment())
 
 
 app.UseAuthentication();
-
 app.UseAuthorization();
 //for wwwroot folder
 app.UseStaticFiles();
 
 app.MapControllers();
+app.MapFallbackToController("Index","Fallback");
+
 
 using var scope = app.Services.CreateScope();
 var context = scope.ServiceProvider.GetRequiredService<InvoiceContext>();
