@@ -92,7 +92,11 @@ builder.Services.AddDbContext<InvoiceContext>(opt =>{
 
 builder.Services.AddScoped<TokenService>();
 
+builder.Services.AddControllersWithViews();
+
 var app = builder.Build();
+
+
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -103,12 +107,14 @@ if (app.Environment.IsDevelopment())
 }else{
     app.UseCors("ProdCors");
     app.UseHttpsRedirection();
-
 }
+
 
 app.UseAuthentication();
 
 app.UseAuthorization();
+//for wwwroot folder
+app.UseStaticFiles();
 
 app.MapControllers();
 

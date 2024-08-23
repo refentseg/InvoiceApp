@@ -78,7 +78,7 @@ namespace API.Extensions
                 {
                     if (Enum.TryParse(typeof(InvoiceStatus), statusString, true, out var parsedStatus))
                     {
-                    statusList.Add((InvoiceStatus)parsedStatus);
+                        statusList.Add((InvoiceStatus)parsedStatus);
                     }
                 }
             }

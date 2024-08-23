@@ -11,7 +11,7 @@ namespace API.Data
 {
     public class InvoiceContext:IdentityDbContext<User, Role, int>
     {
-        public InvoiceContext(DbContextOptions options) :base(options)
+       public InvoiceContext(DbContextOptions options) :base(options)
        {
         
        }
