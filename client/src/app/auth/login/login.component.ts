@@ -4,7 +4,6 @@ import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, 
 import { z } from 'zod';
 import { AuthService } from '../auth.service';
 import { Router, RouterModule } from '@angular/router';
-import { zodValidator } from '../../validation/validator';
 import { ToastrService } from 'ngx-toastr';
 import { CommonModule } from '@angular/common';
 

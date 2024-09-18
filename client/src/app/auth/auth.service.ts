@@ -32,6 +32,8 @@ export class AuthService {
       );
   }
 
+  //TODO: ADD register
+
   getCurrentUser(): Observable<any> {
     return this.http.get<any>(`${this.baseUrl}/currentUser`);
   }
