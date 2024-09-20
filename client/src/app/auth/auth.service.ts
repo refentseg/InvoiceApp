@@ -32,7 +32,17 @@ export class AuthService {
       );
   }
 
-  //TODO: ADD register
+  register(registerDetails: {
+    firstName: string;
+    lastName: string;
+    username: string;
+    email: string;
+    company: string;
+    password: string;
+    confirmPassword: string;
+  }): Observable<User> {
+    return this.http.post<User>(`${this.baseUrl}/register`, registerDetails);
+  }
 
   getCurrentUser(): Observable<any> {
     return this.http.get<any>(`${this.baseUrl}/currentUser`);

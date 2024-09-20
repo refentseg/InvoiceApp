@@ -3,12 +3,13 @@ import { Injectable } from '@angular/core';
 import { CreateInvoice, Invoice, InvoiceParams, UpdateInvoice } from '../models/invoice';
 import { map, Observable } from 'rxjs';
 import { MetaData, Paginatedresponse } from '../models/pagination';
+import { environment } from '../../environment/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class InvoicesService {
-  private baseUrl: string = 'http://localhost:5000/api'
+  private baseUrl: string = environment.apiUrl;
 
   constructor(private http: HttpClient) { }
 

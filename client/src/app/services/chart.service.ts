@@ -1,12 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from '../../environment/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ChartService {
-  private baseUrl: string = 'http://localhost:5000/api/charts'
+  private baseUrl: string = environment.apiUrl;
   constructor(private http: HttpClient) { }
 
   getTotalSum(): Observable<number> {
@@ -14,10 +15,10 @@ export class ChartService {
   }
 
   getTotalSumPerMonth(): Observable<{ [key: string]: number }> {
-    return this.http.get<{ [key: string]: number }>(`${this.baseUrl}/total-sum-per-month`);
+    return this.http.get<{ [key: string]: number }>(`${this.baseUrl}/charts/total-sum-per-month`);
   }
 
   getSumByStatus(): Observable<{ [key: string]: number }> {
-    return this.http.get<{ [key: string]: number }>(`${this.baseUrl}/sum-by-status`);
+    return this.http.get<{ [key: string]: number }>(`${this.baseUrl}/charts/sum-by-status`);
   }
 }
