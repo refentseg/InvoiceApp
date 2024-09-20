@@ -14,6 +14,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace API.Controllers
 {
+    
     public class AccountController:BaseApiController
     {
         private readonly UserManager<User> _userManager;

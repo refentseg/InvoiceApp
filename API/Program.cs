@@ -2,6 +2,7 @@ using System.Text;
 using System.Text.Json.Serialization;
 using API.Data;
 using API.Entity;
+using API.Repository;
 using API.RequestHelpers;
 using API.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -47,10 +48,11 @@ builder.Services.AddSwaggerGen(
             }
 );
 
+
 builder.Services.AddCors((options)=>{
     options.AddPolicy("DevCors",(corsBuilder)=>{
         //Where Framework can call requests React,Angular etc.
-        corsBuilder.WithOrigins("http://localhost:4200","http://localhost:3000","http://localhost:8000")
+        corsBuilder.WithOrigins("http://localhost:4200","http://localhost:3000","http://localhost:8000","http://localhost:5000")
             .AllowAnyHeader()
             .AllowAnyMethod()
             .AllowCredentials();
@@ -64,6 +66,8 @@ builder.Services.AddCors((options)=>{
             .AllowCredentials();
     });
 });
+builder.Services.AddHttpContextAccessor();
+builder.Services.AddScoped<IInvoiceRepository, InvoiceRepository>();
 
 //User requirements
 builder.Services.AddIdentityCore<User>(opt =>
@@ -94,6 +98,7 @@ builder.Services.AddScoped<TokenService>();
 
 builder.Services.AddControllersWithViews();
 
+
 var app = builder.Build();
 
 
@@ -117,8 +122,7 @@ app.UseAuthentication();
 app.UseAuthorization();
 //for wwwroot folder
 app.UseStaticFiles();
-
-app.MapControllers();
+app.UseRouting();
 app.MapFallbackToController("Index","Fallback");
 
 

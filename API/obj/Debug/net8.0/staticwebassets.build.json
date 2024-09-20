@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "hJI9SOT70wOkb6czgAcQk2kB+qAZOuZbrG4VNjeqoWI=",
+  "Hash": "qwcGfRRFB6n0NJngndZ8u+4XzQ9xj/ZKvwrjOGqLOM0=",
   "Source": "API",
   "BasePath": "_content/API",
   "Mode": "Default",
@@ -264,12 +264,12 @@
       "OriginalItemSpec": "wwwroot\\index.html"
     },
     {
-      "Identity": "D:\\Developer\\Projects\\InvoicingApp\\API\\wwwroot\\main-SOVWDHFC.js",
+      "Identity": "D:\\Developer\\Projects\\InvoicingApp\\API\\wwwroot\\main-DAQGTHV5.js",
       "SourceId": "API",
       "SourceType": "Discovered",
       "ContentRoot": "D:\\Developer\\Projects\\InvoicingApp\\API\\wwwroot\\",
       "BasePath": "_content/API",
-      "RelativePath": "main-SOVWDHFC.js",
+      "RelativePath": "main-DAQGTHV5.js",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -280,7 +280,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\main-SOVWDHFC.js"
+      "OriginalItemSpec": "wwwroot\\main-DAQGTHV5.js"
     },
     {
       "Identity": "D:\\Developer\\Projects\\InvoicingApp\\API\\wwwroot\\polyfills-6EAL64PA.js",

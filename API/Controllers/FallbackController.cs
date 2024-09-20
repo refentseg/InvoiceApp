@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
 {
-    [Authorize]
+    
     public class FallbackController :Controller
     {
         public IActionResult Index()
