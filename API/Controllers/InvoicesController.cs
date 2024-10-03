@@ -27,7 +27,7 @@ namespace API.Controllers
         private readonly IInvoiceRepository _invoiceRepository;
         
 
-        public InvoicesController(InvoiceContext context,UserManager<User> userManager, IInvoiceRepository invoiceRepository)
+        public InvoicesController(IInvoiceRepository invoiceRepository)
         {
             _invoiceRepository=invoiceRepository;
         }

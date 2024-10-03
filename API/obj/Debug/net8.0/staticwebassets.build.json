@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "qwcGfRRFB6n0NJngndZ8u+4XzQ9xj/ZKvwrjOGqLOM0=",
+  "Hash": "sFWxVLG0UJIpyvd7byQPaMK87S40nRQTUKQmtVQEmmQ=",
   "Source": "API",
   "BasePath": "_content/API",
   "Mode": "Default",
@@ -264,12 +264,12 @@
       "OriginalItemSpec": "wwwroot\\index.html"
     },
     {
-      "Identity": "D:\\Developer\\Projects\\InvoicingApp\\API\\wwwroot\\main-DAQGTHV5.js",
+      "Identity": "D:\\Developer\\Projects\\InvoicingApp\\API\\wwwroot\\main-JDKGM5G3.js",
       "SourceId": "API",
       "SourceType": "Discovered",
       "ContentRoot": "D:\\Developer\\Projects\\InvoicingApp\\API\\wwwroot\\",
       "BasePath": "_content/API",
-      "RelativePath": "main-DAQGTHV5.js",
+      "RelativePath": "main-JDKGM5G3.js",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -280,7 +280,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\main-DAQGTHV5.js"
+      "OriginalItemSpec": "wwwroot\\main-JDKGM5G3.js"
     },
     {
       "Identity": "D:\\Developer\\Projects\\InvoicingApp\\API\\wwwroot\\polyfills-6EAL64PA.js",
@@ -302,12 +302,12 @@
       "OriginalItemSpec": "wwwroot\\polyfills-6EAL64PA.js"
     },
     {
-      "Identity": "D:\\Developer\\Projects\\InvoicingApp\\API\\wwwroot\\styles-MQPLLCQM.css",
+      "Identity": "D:\\Developer\\Projects\\InvoicingApp\\API\\wwwroot\\styles-EDHLWIEQ.css",
       "SourceId": "API",
       "SourceType": "Discovered",
       "ContentRoot": "D:\\Developer\\Projects\\InvoicingApp\\API\\wwwroot\\",
       "BasePath": "_content/API",
-      "RelativePath": "styles-MQPLLCQM.css",
+      "RelativePath": "styles-EDHLWIEQ.css",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -318,7 +318,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\styles-MQPLLCQM.css"
+      "OriginalItemSpec": "wwwroot\\styles-EDHLWIEQ.css"
     }
   ]
 }

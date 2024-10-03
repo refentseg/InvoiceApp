@@ -1,0 +1,165 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Developer\\Projects\\InvoicingApp\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{6C2A05A7-5707-4E32-97F7-2035CF297D47}|API\\API.csproj|d:\\developer\\projects\\invoicingapp\\api\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6C2A05A7-5707-4E32-97F7-2035CF297D47}|API\\API.csproj|solutionrelative:api\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6C2A05A7-5707-4E32-97F7-2035CF297D47}|API\\API.csproj|d:\\developer\\projects\\invoicingapp\\api\\controllers\\invoicescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6C2A05A7-5707-4E32-97F7-2035CF297D47}|API\\API.csproj|solutionrelative:api\\controllers\\invoicescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{35475844-0648-47D5-B741-6C604F48D1E6}|ReviewProject\\ReviewProject.csproj|d:\\developer\\projects\\invoicingapp\\reviewproject\\controller\\invoicecontrollertests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{35475844-0648-47D5-B741-6C604F48D1E6}|ReviewProject\\ReviewProject.csproj|solutionrelative:reviewproject\\controller\\invoicecontrollertests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6C2A05A7-5707-4E32-97F7-2035CF297D47}|API\\API.csproj|d:\\developer\\projects\\invoicingapp\\api\\repository\\invoicerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6C2A05A7-5707-4E32-97F7-2035CF297D47}|API\\API.csproj|solutionrelative:api\\repository\\invoicerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6C2A05A7-5707-4E32-97F7-2035CF297D47}|API\\API.csproj|d:\\developer\\projects\\invoicingapp\\api\\repository\\iinvoicerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6C2A05A7-5707-4E32-97F7-2035CF297D47}|API\\API.csproj|solutionrelative:api\\repository\\iinvoicerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6C2A05A7-5707-4E32-97F7-2035CF297D47}|API\\API.csproj|d:\\developer\\projects\\invoicingapp\\api\\entity\\invoiceaggregate\\invoice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6C2A05A7-5707-4E32-97F7-2035CF297D47}|API\\API.csproj|solutionrelative:api\\entity\\invoiceaggregate\\invoice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{35475844-0648-47D5-B741-6C604F48D1E6}|ReviewProject\\ReviewProject.csproj|d:\\developer\\projects\\invoicingapp\\reviewproject\\reviewproject.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{35475844-0648-47D5-B741-6C604F48D1E6}|ReviewProject\\ReviewProject.csproj|solutionrelative:reviewproject\\reviewproject.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{35475844-0648-47D5-B741-6C604F48D1E6}|ReviewProject\\ReviewProject.csproj|d:\\developer\\projects\\invoicingapp\\reviewproject\\unittest1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{35475844-0648-47D5-B741-6C604F48D1E6}|ReviewProject\\ReviewProject.csproj|solutionrelative:reviewproject\\unittest1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6C2A05A7-5707-4E32-97F7-2035CF297D47}|API\\API.csproj|d:\\developer\\projects\\invoicingapp\\api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6C2A05A7-5707-4E32-97F7-2035CF297D47}|API\\API.csproj|solutionrelative:api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AccountController.cs",
+              "DocumentMoniker": "D:\\Developer\\Projects\\InvoicingApp\\API\\Controllers\\AccountController.cs",
+              "RelativeDocumentMoniker": "API\\Controllers\\AccountController.cs",
+              "ToolTip": "D:\\Developer\\Projects\\InvoicingApp\\API\\Controllers\\AccountController.cs",
+              "RelativeToolTip": "API\\Controllers\\AccountController.cs",
+              "ViewState": "AQIAACEAAAAAAAAAAAAYwBMAAAA4AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-21T11:32:18.303Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Invoice.cs",
+              "DocumentMoniker": "D:\\Developer\\Projects\\InvoicingApp\\API\\Entity\\InvoiceAggregate\\Invoice.cs",
+              "RelativeDocumentMoniker": "API\\Entity\\InvoiceAggregate\\Invoice.cs",
+              "ToolTip": "D:\\Developer\\Projects\\InvoicingApp\\API\\Entity\\InvoiceAggregate\\Invoice.cs",
+              "RelativeToolTip": "API\\Entity\\InvoiceAggregate\\Invoice.cs",
+              "ViewState": "AQIAADEAAAAAAAAAAADwv0MAAAAIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-21T06:19:32.222Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "IInvoiceRepository.cs",
+              "DocumentMoniker": "D:\\Developer\\Projects\\InvoicingApp\\API\\Repository\\IInvoiceRepository.cs",
+              "RelativeDocumentMoniker": "API\\Repository\\IInvoiceRepository.cs",
+              "ToolTip": "D:\\Developer\\Projects\\InvoicingApp\\API\\Repository\\IInvoiceRepository.cs",
+              "RelativeToolTip": "API\\Repository\\IInvoiceRepository.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-20T09:12:20.933Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "InvoiceControllerTests.cs",
+              "DocumentMoniker": "D:\\Developer\\Projects\\InvoicingApp\\ReviewProject\\Controller\\InvoiceControllerTests.cs",
+              "RelativeDocumentMoniker": "ReviewProject\\Controller\\InvoiceControllerTests.cs",
+              "ToolTip": "D:\\Developer\\Projects\\InvoicingApp\\ReviewProject\\Controller\\InvoiceControllerTests.cs",
+              "RelativeToolTip": "ReviewProject\\Controller\\InvoiceControllerTests.cs",
+              "ViewState": "AQIAAIMAAAAAAAAAAAAqwIoAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-20T15:56:04.961Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "InvoiceRepository.cs",
+              "DocumentMoniker": "D:\\Developer\\Projects\\InvoicingApp\\API\\Repository\\InvoiceRepository.cs",
+              "RelativeDocumentMoniker": "API\\Repository\\InvoiceRepository.cs",
+              "ToolTip": "D:\\Developer\\Projects\\InvoicingApp\\API\\Repository\\InvoiceRepository.cs",
+              "RelativeToolTip": "API\\Repository\\InvoiceRepository.cs",
+              "ViewState": "AQIAAIUAAAAAAAAAAAAwwI8AAAAkAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-20T09:14:17.086Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ReviewProject.csproj",
+              "DocumentMoniker": "D:\\Developer\\Projects\\InvoicingApp\\ReviewProject\\ReviewProject.csproj",
+              "RelativeDocumentMoniker": "ReviewProject\\ReviewProject.csproj",
+              "ToolTip": "D:\\Developer\\Projects\\InvoicingApp\\ReviewProject\\ReviewProject.csproj",
+              "RelativeToolTip": "ReviewProject\\ReviewProject.csproj",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-09-20T09:00:52.19Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Developer\\Projects\\InvoicingApp\\API\\Program.cs",
+              "RelativeDocumentMoniker": "API\\Program.cs",
+              "ToolTip": "D:\\Developer\\Projects\\InvoicingApp\\API\\Program.cs",
+              "RelativeToolTip": "API\\Program.cs",
+              "ViewState": "AQIAAEwAAAAAAAAAAAAAAC4AAAATAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-20T10:16:07.085Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "InvoicesController.cs",
+              "DocumentMoniker": "D:\\Developer\\Projects\\InvoicingApp\\API\\Controllers\\InvoicesController.cs",
+              "RelativeDocumentMoniker": "API\\Controllers\\InvoicesController.cs",
+              "ToolTip": "D:\\Developer\\Projects\\InvoicingApp\\API\\Controllers\\InvoicesController.cs",
+              "RelativeToolTip": "API\\Controllers\\InvoicesController.cs",
+              "ViewState": "AQIAACoAAAAAAAAAAAA4wG8AAAANAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-20T08:23:40.261Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "UnitTest1.cs",
+              "DocumentMoniker": "D:\\Developer\\Projects\\InvoicingApp\\ReviewProject\\UnitTest1.cs",
+              "RelativeDocumentMoniker": "ReviewProject\\UnitTest1.cs",
+              "ToolTip": "D:\\Developer\\Projects\\InvoicingApp\\ReviewProject\\UnitTest1.cs",
+              "RelativeToolTip": "ReviewProject\\UnitTest1.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-20T08:58:52.159Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

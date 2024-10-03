@@ -92,8 +92,6 @@ namespace API.Controllers
                 Token = await _tokenService.GenerateToken(user),
             };
         }
-
-
        
     }
 
