@@ -5,20 +5,23 @@ using API.Entity;
 using API.Extensions;
 using API.RequestHelpers;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 
 namespace API.Repository
 {
     public class InvoiceRepository:IInvoiceRepository
     {
+        private readonly UserManager<User> _userManager;
         private readonly InvoiceContext _context;
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly ILogger<InvoiceRepository> _logger;
 
-        public InvoiceRepository(InvoiceContext context, IHttpContextAccessor httpContextAccessor, ILogger<InvoiceRepository> logger)
+        public InvoiceRepository(UserManager<User> userManager,InvoiceContext context, IHttpContextAccessor httpContextAccessor, ILogger<InvoiceRepository> logger)
         {
             _context = context;
             _httpContextAccessor = httpContextAccessor;
             _logger = logger;
+            _userManager = userManager;
         }
         //Get all Invoices
         public async Task<PagedList<InvoiceDto>> GetInvoices(InvoiceParams invoiceParams)
@@ -66,9 +69,13 @@ namespace API.Repository
             return "INVTBT" + currentIdCounter.ToString("D3");
         }
 
-        //Creating Next Invoice
+        //Creating Invoice
         public async Task<string> CreateInvoice(CreateInvoiceDto invoiceDto)
         {
+            var username = _httpContextAccessor.HttpContext.User.Identity?.Name;
+
+            var currentUser = await _userManager.FindByNameAsync(username);
+
             using var transaction = await _context.Database.BeginTransactionAsync();
             try
             {
@@ -112,7 +119,7 @@ namespace API.Repository
                 {
                     Id = await GenerateCustomId(),
                     Items = invoiceItems,
-                    SalesRep = _httpContextAccessor.HttpContext.User.Identity.Name,
+                    SalesRep = currentUser.Company,
                     CustomerId = customer.Id,
                     Customer = customer,
                     Subtotal = subtotal
