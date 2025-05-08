@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "sFWxVLG0UJIpyvd7byQPaMK87S40nRQTUKQmtVQEmmQ=",
+  "Hash": "ycFirXTZAIOSUfW8jnq1wTLB20tLL6Mnn96BJ2K98m4=",
   "Source": "API",
   "BasePath": "_content/API",
   "Mode": "Default",
@@ -22,15 +22,17 @@
       "SourceType": "Discovered",
       "ContentRoot": "D:\\Developer\\Projects\\InvoicingApp\\API\\wwwroot\\",
       "BasePath": "_content/API",
-      "RelativePath": "3rdpartylicenses.txt",
+      "RelativePath": "3rdpartylicenses#[.{fingerprint}]?.txt",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeBehavior": "",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
+      "Fingerprint": "f6lik42wyz",
+      "Integrity": "SYCjXTqEJFGMM7ZwJdgK9bHe+u8ZCdWnUwhsQwllSaQ=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\3rdpartylicenses.txt"
@@ -41,15 +43,17 @@
       "SourceType": "Discovered",
       "ContentRoot": "D:\\Developer\\Projects\\InvoicingApp\\API\\wwwroot\\",
       "BasePath": "_content/API",
-      "RelativePath": "assets/illu/ufo.svg",
+      "RelativePath": "assets/illu/ufo#[.{fingerprint}]?.svg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeBehavior": "",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
+      "Fingerprint": "5xzsrpmvxv",
+      "Integrity": "2cM09K+4ccwoeySbMxqqovGge/ORkS0w9n+yxZtC3yE=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\assets\\illu\\ufo.svg"
@@ -60,15 +64,17 @@
       "SourceType": "Discovered",
       "ContentRoot": "D:\\Developer\\Projects\\InvoicingApp\\API\\wwwroot\\",
       "BasePath": "_content/API",
-      "RelativePath": "assets/imgs/login.jpg",
+      "RelativePath": "assets/imgs/login#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeBehavior": "",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
+      "Fingerprint": "ebdcbm8a5i",
+      "Integrity": "atEwNqpCcfVilkf2yqC8rl+wAFYHNoIwzgj632UpFi8=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\assets\\imgs\\login.jpg"
@@ -79,15 +85,17 @@
       "SourceType": "Discovered",
       "ContentRoot": "D:\\Developer\\Projects\\InvoicingApp\\API\\wwwroot\\",
       "BasePath": "_content/API",
-      "RelativePath": "assets/imgs/signup.jpg",
+      "RelativePath": "assets/imgs/signup#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeBehavior": "",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
+      "Fingerprint": "386onwgt4j",
+      "Integrity": "fZP+cc9Jcg2GQFSprH/bYrcjmLUOH3Mm4smVm/9cknw=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\assets\\imgs\\signup.jpg"
@@ -98,15 +106,17 @@
       "SourceType": "Discovered",
       "ContentRoot": "D:\\Developer\\Projects\\InvoicingApp\\API\\wwwroot\\",
       "BasePath": "_content/API",
-      "RelativePath": "chunk-4Q4H2K27.js",
+      "RelativePath": "chunk-4Q4H2K27#[.{fingerprint}]?.js",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeBehavior": "",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
+      "Fingerprint": "55jtgqobgg",
+      "Integrity": "1wGmVaMNv9qiw/kZICXK+0pLA+/pbXJncPab/ln4HDw=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\chunk-4Q4H2K27.js"
@@ -117,15 +127,17 @@
       "SourceType": "Discovered",
       "ContentRoot": "D:\\Developer\\Projects\\InvoicingApp\\API\\wwwroot\\",
       "BasePath": "_content/API",
-      "RelativePath": "chunk-5OSS7T24.js",
+      "RelativePath": "chunk-5OSS7T24#[.{fingerprint}]?.js",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeBehavior": "",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
+      "Fingerprint": "13yaa9myvj",
+      "Integrity": "80a9MBLSZjqvNUhIpTvqyXPLK+MtEo5pyZJriQuJDHk=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\chunk-5OSS7T24.js"
@@ -136,15 +148,17 @@
       "SourceType": "Discovered",
       "ContentRoot": "D:\\Developer\\Projects\\InvoicingApp\\API\\wwwroot\\",
       "BasePath": "_content/API",
-      "RelativePath": "chunk-7RV22KDK.js",
+      "RelativePath": "chunk-7RV22KDK#[.{fingerprint}]?.js",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeBehavior": "",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
+      "Fingerprint": "3770gj4u0d",
+      "Integrity": "byAA6h/b7lp0ajcbj1lZgSSsjPig2D+G0jJ7PaxAlBs=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\chunk-7RV22KDK.js"
@@ -155,15 +169,17 @@
       "SourceType": "Discovered",
       "ContentRoot": "D:\\Developer\\Projects\\InvoicingApp\\API\\wwwroot\\",
       "BasePath": "_content/API",
-      "RelativePath": "chunk-H56SK2GW.js",
+      "RelativePath": "chunk-H56SK2GW#[.{fingerprint}]?.js",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeBehavior": "",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
+      "Fingerprint": "mfwlrjzjwx",
+      "Integrity": "cq4vteskmOBWi2q2CFY2nY8utDmBm62n2go6I+kwrXA=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\chunk-H56SK2GW.js"
@@ -174,15 +190,17 @@
       "SourceType": "Discovered",
       "ContentRoot": "D:\\Developer\\Projects\\InvoicingApp\\API\\wwwroot\\",
       "BasePath": "_content/API",
-      "RelativePath": "chunk-MMNAXEF7.js",
+      "RelativePath": "chunk-MMNAXEF7#[.{fingerprint}]?.js",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeBehavior": "",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
+      "Fingerprint": "3xg2yfvkhl",
+      "Integrity": "2U8SDD/b/B/cue4FWxSyX2jf/6qwG1B4xz+VnTu1rDg=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\chunk-MMNAXEF7.js"
@@ -193,15 +211,17 @@
       "SourceType": "Discovered",
       "ContentRoot": "D:\\Developer\\Projects\\InvoicingApp\\API\\wwwroot\\",
       "BasePath": "_content/API",
-      "RelativePath": "chunk-NAQ7NYMF.js",
+      "RelativePath": "chunk-NAQ7NYMF#[.{fingerprint}]?.js",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeBehavior": "",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
+      "Fingerprint": "szeegm0z4q",
+      "Integrity": "aCudR6yJwFUMoSU3cd4GCDxDDDblWq/IK9oEkrD/A64=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\chunk-NAQ7NYMF.js"
@@ -212,15 +232,17 @@
       "SourceType": "Discovered",
       "ContentRoot": "D:\\Developer\\Projects\\InvoicingApp\\API\\wwwroot\\",
       "BasePath": "_content/API",
-      "RelativePath": "chunk-P2VZOJAX.js",
+      "RelativePath": "chunk-P2VZOJAX#[.{fingerprint}]?.js",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeBehavior": "",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
+      "Fingerprint": "je11old4w2",
+      "Integrity": "peazgOJQWeHEYsrSCFRnxeQeLCd6pPRxfGganybtPMU=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\chunk-P2VZOJAX.js"
@@ -231,15 +253,17 @@
       "SourceType": "Discovered",
       "ContentRoot": "D:\\Developer\\Projects\\InvoicingApp\\API\\wwwroot\\",
       "BasePath": "_content/API",
-      "RelativePath": "favicon.ico",
+      "RelativePath": "favicon#[.{fingerprint}]?.ico",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeBehavior": "",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
+      "Fingerprint": "vagikyz9qx",
+      "Integrity": "+RAr6AKXwFKSB2B75Sd7T5C8qJ1lmI+hdxuRx4lOgV8=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
@@ -250,15 +274,17 @@
       "SourceType": "Discovered",
       "ContentRoot": "D:\\Developer\\Projects\\InvoicingApp\\API\\wwwroot\\",
       "BasePath": "_content/API",
-      "RelativePath": "index.html",
+      "RelativePath": "index#[.{fingerprint}]?.html",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeBehavior": "",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
+      "Fingerprint": "s354af83js",
+      "Integrity": "KOcG/pyv5WaaIFbkGonLyayUHvgpOGmTSrODKDIXFBA=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\index.html"
@@ -269,15 +295,17 @@
       "SourceType": "Discovered",
       "ContentRoot": "D:\\Developer\\Projects\\InvoicingApp\\API\\wwwroot\\",
       "BasePath": "_content/API",
-      "RelativePath": "main-JDKGM5G3.js",
+      "RelativePath": "main-JDKGM5G3#[.{fingerprint}]?.js",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeBehavior": "",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
+      "Fingerprint": "ztoee65nxn",
+      "Integrity": "ydR+8CBVDu7tzbHX3/Zj2Wk0EYnKe5USZNEZ+p7lbc4=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\main-JDKGM5G3.js"
@@ -288,15 +316,17 @@
       "SourceType": "Discovered",
       "ContentRoot": "D:\\Developer\\Projects\\InvoicingApp\\API\\wwwroot\\",
       "BasePath": "_content/API",
-      "RelativePath": "polyfills-6EAL64PA.js",
+      "RelativePath": "polyfills-6EAL64PA#[.{fingerprint}]?.js",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeBehavior": "",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
+      "Fingerprint": "uzifi269ha",
+      "Integrity": "6kfxpzEZKWcscpcc8+WFXqUXW2CtlU+9spwbgzYaCwU=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\polyfills-6EAL64PA.js"
@@ -307,18 +337,1334 @@
       "SourceType": "Discovered",
       "ContentRoot": "D:\\Developer\\Projects\\InvoicingApp\\API\\wwwroot\\",
       "BasePath": "_content/API",
-      "RelativePath": "styles-EDHLWIEQ.css",
+      "RelativePath": "styles-EDHLWIEQ#[.{fingerprint}]?.css",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeBehavior": "",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
+      "Fingerprint": "kxm1leoki9",
+      "Integrity": "qChDy9RBJmyszASfo4DP2mQhGv0r8h2bwlL7vmwk00g=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\styles-EDHLWIEQ.css"
+    }
+  ],
+  "Endpoints": [
+    {
+      "Route": "3rdpartylicenses.f6lik42wyz.txt",
+      "AssetFile": "D:\\Developer\\Projects\\InvoicingApp\\API\\wwwroot\\3rdpartylicenses.txt",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "67254"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/plain"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"SYCjXTqEJFGMM7ZwJdgK9bHe+u8ZCdWnUwhsQwllSaQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 20 Sep 2024 15:50:46 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "f6lik42wyz"
+        },
+        {
+          "Name": "label",
+          "Value": "3rdpartylicenses.txt"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-SYCjXTqEJFGMM7ZwJdgK9bHe+u8ZCdWnUwhsQwllSaQ="
+        }
+      ]
+    },
+    {
+      "Route": "3rdpartylicenses.txt",
+      "AssetFile": "D:\\Developer\\Projects\\InvoicingApp\\API\\wwwroot\\3rdpartylicenses.txt",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "67254"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/plain"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"SYCjXTqEJFGMM7ZwJdgK9bHe+u8ZCdWnUwhsQwllSaQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 20 Sep 2024 15:50:46 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-SYCjXTqEJFGMM7ZwJdgK9bHe+u8ZCdWnUwhsQwllSaQ="
+        }
+      ]
+    },
+    {
+      "Route": "assets/illu/ufo.5xzsrpmvxv.svg",
+      "AssetFile": "D:\\Developer\\Projects\\InvoicingApp\\API\\wwwroot\\assets\\illu\\ufo.svg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "123438"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/svg+xml"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"2cM09K+4ccwoeySbMxqqovGge/ORkS0w9n+yxZtC3yE=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 14 Jul 2024 11:07:12 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "5xzsrpmvxv"
+        },
+        {
+          "Name": "label",
+          "Value": "assets/illu/ufo.svg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-2cM09K+4ccwoeySbMxqqovGge/ORkS0w9n+yxZtC3yE="
+        }
+      ]
+    },
+    {
+      "Route": "assets/illu/ufo.svg",
+      "AssetFile": "D:\\Developer\\Projects\\InvoicingApp\\API\\wwwroot\\assets\\illu\\ufo.svg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "123438"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/svg+xml"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"2cM09K+4ccwoeySbMxqqovGge/ORkS0w9n+yxZtC3yE=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 14 Jul 2024 11:07:12 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-2cM09K+4ccwoeySbMxqqovGge/ORkS0w9n+yxZtC3yE="
+        }
+      ]
+    },
+    {
+      "Route": "assets/imgs/login.ebdcbm8a5i.jpg",
+      "AssetFile": "D:\\Developer\\Projects\\InvoicingApp\\API\\wwwroot\\assets\\imgs\\login.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1473494"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"atEwNqpCcfVilkf2yqC8rl+wAFYHNoIwzgj632UpFi8=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 28 Mar 2024 06:55:21 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "ebdcbm8a5i"
+        },
+        {
+          "Name": "label",
+          "Value": "assets/imgs/login.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-atEwNqpCcfVilkf2yqC8rl+wAFYHNoIwzgj632UpFi8="
+        }
+      ]
+    },
+    {
+      "Route": "assets/imgs/login.jpg",
+      "AssetFile": "D:\\Developer\\Projects\\InvoicingApp\\API\\wwwroot\\assets\\imgs\\login.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1473494"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"atEwNqpCcfVilkf2yqC8rl+wAFYHNoIwzgj632UpFi8=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 28 Mar 2024 06:55:21 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-atEwNqpCcfVilkf2yqC8rl+wAFYHNoIwzgj632UpFi8="
+        }
+      ]
+    },
+    {
+      "Route": "assets/imgs/signup.386onwgt4j.jpg",
+      "AssetFile": "D:\\Developer\\Projects\\InvoicingApp\\API\\wwwroot\\assets\\imgs\\signup.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1758749"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"fZP+cc9Jcg2GQFSprH/bYrcjmLUOH3Mm4smVm/9cknw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 28 Mar 2024 11:43:48 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "386onwgt4j"
+        },
+        {
+          "Name": "label",
+          "Value": "assets/imgs/signup.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-fZP+cc9Jcg2GQFSprH/bYrcjmLUOH3Mm4smVm/9cknw="
+        }
+      ]
+    },
+    {
+      "Route": "assets/imgs/signup.jpg",
+      "AssetFile": "D:\\Developer\\Projects\\InvoicingApp\\API\\wwwroot\\assets\\imgs\\signup.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1758749"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"fZP+cc9Jcg2GQFSprH/bYrcjmLUOH3Mm4smVm/9cknw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 28 Mar 2024 11:43:48 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-fZP+cc9Jcg2GQFSprH/bYrcjmLUOH3Mm4smVm/9cknw="
+        }
+      ]
+    },
+    {
+      "Route": "chunk-4Q4H2K27.55jtgqobgg.js",
+      "AssetFile": "D:\\Developer\\Projects\\InvoicingApp\\API\\wwwroot\\chunk-4Q4H2K27.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "243298"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"1wGmVaMNv9qiw/kZICXK+0pLA+/pbXJncPab/ln4HDw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 20 Sep 2024 15:50:46 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "55jtgqobgg"
+        },
+        {
+          "Name": "label",
+          "Value": "chunk-4Q4H2K27.js"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-1wGmVaMNv9qiw/kZICXK+0pLA+/pbXJncPab/ln4HDw="
+        }
+      ]
+    },
+    {
+      "Route": "chunk-4Q4H2K27.js",
+      "AssetFile": "D:\\Developer\\Projects\\InvoicingApp\\API\\wwwroot\\chunk-4Q4H2K27.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "243298"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"1wGmVaMNv9qiw/kZICXK+0pLA+/pbXJncPab/ln4HDw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 20 Sep 2024 15:50:46 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-1wGmVaMNv9qiw/kZICXK+0pLA+/pbXJncPab/ln4HDw="
+        }
+      ]
+    },
+    {
+      "Route": "chunk-5OSS7T24.13yaa9myvj.js",
+      "AssetFile": "D:\\Developer\\Projects\\InvoicingApp\\API\\wwwroot\\chunk-5OSS7T24.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "892"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"80a9MBLSZjqvNUhIpTvqyXPLK+MtEo5pyZJriQuJDHk=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 20 Sep 2024 15:50:46 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "13yaa9myvj"
+        },
+        {
+          "Name": "label",
+          "Value": "chunk-5OSS7T24.js"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-80a9MBLSZjqvNUhIpTvqyXPLK+MtEo5pyZJriQuJDHk="
+        }
+      ]
+    },
+    {
+      "Route": "chunk-5OSS7T24.js",
+      "AssetFile": "D:\\Developer\\Projects\\InvoicingApp\\API\\wwwroot\\chunk-5OSS7T24.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "892"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"80a9MBLSZjqvNUhIpTvqyXPLK+MtEo5pyZJriQuJDHk=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 20 Sep 2024 15:50:46 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-80a9MBLSZjqvNUhIpTvqyXPLK+MtEo5pyZJriQuJDHk="
+        }
+      ]
+    },
+    {
+      "Route": "chunk-7RV22KDK.3770gj4u0d.js",
+      "AssetFile": "D:\\Developer\\Projects\\InvoicingApp\\API\\wwwroot\\chunk-7RV22KDK.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "347"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"byAA6h/b7lp0ajcbj1lZgSSsjPig2D+G0jJ7PaxAlBs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 20 Sep 2024 15:50:46 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "3770gj4u0d"
+        },
+        {
+          "Name": "label",
+          "Value": "chunk-7RV22KDK.js"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-byAA6h/b7lp0ajcbj1lZgSSsjPig2D+G0jJ7PaxAlBs="
+        }
+      ]
+    },
+    {
+      "Route": "chunk-7RV22KDK.js",
+      "AssetFile": "D:\\Developer\\Projects\\InvoicingApp\\API\\wwwroot\\chunk-7RV22KDK.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "347"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"byAA6h/b7lp0ajcbj1lZgSSsjPig2D+G0jJ7PaxAlBs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 20 Sep 2024 15:50:46 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-byAA6h/b7lp0ajcbj1lZgSSsjPig2D+G0jJ7PaxAlBs="
+        }
+      ]
+    },
+    {
+      "Route": "chunk-H56SK2GW.js",
+      "AssetFile": "D:\\Developer\\Projects\\InvoicingApp\\API\\wwwroot\\chunk-H56SK2GW.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "203117"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"cq4vteskmOBWi2q2CFY2nY8utDmBm62n2go6I+kwrXA=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 20 Sep 2024 15:50:46 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-cq4vteskmOBWi2q2CFY2nY8utDmBm62n2go6I+kwrXA="
+        }
+      ]
+    },
+    {
+      "Route": "chunk-H56SK2GW.mfwlrjzjwx.js",
+      "AssetFile": "D:\\Developer\\Projects\\InvoicingApp\\API\\wwwroot\\chunk-H56SK2GW.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "203117"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"cq4vteskmOBWi2q2CFY2nY8utDmBm62n2go6I+kwrXA=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 20 Sep 2024 15:50:46 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "mfwlrjzjwx"
+        },
+        {
+          "Name": "label",
+          "Value": "chunk-H56SK2GW.js"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-cq4vteskmOBWi2q2CFY2nY8utDmBm62n2go6I+kwrXA="
+        }
+      ]
+    },
+    {
+      "Route": "chunk-MMNAXEF7.3xg2yfvkhl.js",
+      "AssetFile": "D:\\Developer\\Projects\\InvoicingApp\\API\\wwwroot\\chunk-MMNAXEF7.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "22073"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"2U8SDD/b/B/cue4FWxSyX2jf/6qwG1B4xz+VnTu1rDg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 20 Sep 2024 15:50:46 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "3xg2yfvkhl"
+        },
+        {
+          "Name": "label",
+          "Value": "chunk-MMNAXEF7.js"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-2U8SDD/b/B/cue4FWxSyX2jf/6qwG1B4xz+VnTu1rDg="
+        }
+      ]
+    },
+    {
+      "Route": "chunk-MMNAXEF7.js",
+      "AssetFile": "D:\\Developer\\Projects\\InvoicingApp\\API\\wwwroot\\chunk-MMNAXEF7.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "22073"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"2U8SDD/b/B/cue4FWxSyX2jf/6qwG1B4xz+VnTu1rDg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 20 Sep 2024 15:50:46 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-2U8SDD/b/B/cue4FWxSyX2jf/6qwG1B4xz+VnTu1rDg="
+        }
+      ]
+    },
+    {
+      "Route": "chunk-NAQ7NYMF.js",
+      "AssetFile": "D:\\Developer\\Projects\\InvoicingApp\\API\\wwwroot\\chunk-NAQ7NYMF.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "158165"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"aCudR6yJwFUMoSU3cd4GCDxDDDblWq/IK9oEkrD/A64=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 20 Sep 2024 15:50:46 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-aCudR6yJwFUMoSU3cd4GCDxDDDblWq/IK9oEkrD/A64="
+        }
+      ]
+    },
+    {
+      "Route": "chunk-NAQ7NYMF.szeegm0z4q.js",
+      "AssetFile": "D:\\Developer\\Projects\\InvoicingApp\\API\\wwwroot\\chunk-NAQ7NYMF.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "158165"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"aCudR6yJwFUMoSU3cd4GCDxDDDblWq/IK9oEkrD/A64=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 20 Sep 2024 15:50:46 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "szeegm0z4q"
+        },
+        {
+          "Name": "label",
+          "Value": "chunk-NAQ7NYMF.js"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-aCudR6yJwFUMoSU3cd4GCDxDDDblWq/IK9oEkrD/A64="
+        }
+      ]
+    },
+    {
+      "Route": "chunk-P2VZOJAX.je11old4w2.js",
+      "AssetFile": "D:\\Developer\\Projects\\InvoicingApp\\API\\wwwroot\\chunk-P2VZOJAX.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1429"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"peazgOJQWeHEYsrSCFRnxeQeLCd6pPRxfGganybtPMU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 20 Sep 2024 15:50:46 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "je11old4w2"
+        },
+        {
+          "Name": "label",
+          "Value": "chunk-P2VZOJAX.js"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-peazgOJQWeHEYsrSCFRnxeQeLCd6pPRxfGganybtPMU="
+        }
+      ]
+    },
+    {
+      "Route": "chunk-P2VZOJAX.js",
+      "AssetFile": "D:\\Developer\\Projects\\InvoicingApp\\API\\wwwroot\\chunk-P2VZOJAX.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1429"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"peazgOJQWeHEYsrSCFRnxeQeLCd6pPRxfGganybtPMU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 20 Sep 2024 15:50:46 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-peazgOJQWeHEYsrSCFRnxeQeLCd6pPRxfGganybtPMU="
+        }
+      ]
+    },
+    {
+      "Route": "favicon.ico",
+      "AssetFile": "D:\\Developer\\Projects\\InvoicingApp\\API\\wwwroot\\favicon.ico",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "15086"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/x-icon"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"+RAr6AKXwFKSB2B75Sd7T5C8qJ1lmI+hdxuRx4lOgV8=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 13 Jul 2024 05:19:36 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-+RAr6AKXwFKSB2B75Sd7T5C8qJ1lmI+hdxuRx4lOgV8="
+        }
+      ]
+    },
+    {
+      "Route": "favicon.vagikyz9qx.ico",
+      "AssetFile": "D:\\Developer\\Projects\\InvoicingApp\\API\\wwwroot\\favicon.ico",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "15086"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/x-icon"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"+RAr6AKXwFKSB2B75Sd7T5C8qJ1lmI+hdxuRx4lOgV8=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 13 Jul 2024 05:19:36 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "vagikyz9qx"
+        },
+        {
+          "Name": "label",
+          "Value": "favicon.ico"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-+RAr6AKXwFKSB2B75Sd7T5C8qJ1lmI+hdxuRx4lOgV8="
+        }
+      ]
+    },
+    {
+      "Route": "index.html",
+      "AssetFile": "D:\\Developer\\Projects\\InvoicingApp\\API\\wwwroot\\index.html",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "52848"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/html"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"KOcG/pyv5WaaIFbkGonLyayUHvgpOGmTSrODKDIXFBA=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 20 Sep 2024 15:50:46 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-KOcG/pyv5WaaIFbkGonLyayUHvgpOGmTSrODKDIXFBA="
+        }
+      ]
+    },
+    {
+      "Route": "index.s354af83js.html",
+      "AssetFile": "D:\\Developer\\Projects\\InvoicingApp\\API\\wwwroot\\index.html",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "52848"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/html"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"KOcG/pyv5WaaIFbkGonLyayUHvgpOGmTSrODKDIXFBA=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 20 Sep 2024 15:50:46 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "s354af83js"
+        },
+        {
+          "Name": "label",
+          "Value": "index.html"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-KOcG/pyv5WaaIFbkGonLyayUHvgpOGmTSrODKDIXFBA="
+        }
+      ]
+    },
+    {
+      "Route": "main-JDKGM5G3.js",
+      "AssetFile": "D:\\Developer\\Projects\\InvoicingApp\\API\\wwwroot\\main-JDKGM5G3.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1125232"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"ydR+8CBVDu7tzbHX3/Zj2Wk0EYnKe5USZNEZ+p7lbc4=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 20 Sep 2024 15:50:46 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-ydR+8CBVDu7tzbHX3/Zj2Wk0EYnKe5USZNEZ+p7lbc4="
+        }
+      ]
+    },
+    {
+      "Route": "main-JDKGM5G3.ztoee65nxn.js",
+      "AssetFile": "D:\\Developer\\Projects\\InvoicingApp\\API\\wwwroot\\main-JDKGM5G3.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1125232"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"ydR+8CBVDu7tzbHX3/Zj2Wk0EYnKe5USZNEZ+p7lbc4=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 20 Sep 2024 15:50:46 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "ztoee65nxn"
+        },
+        {
+          "Name": "label",
+          "Value": "main-JDKGM5G3.js"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-ydR+8CBVDu7tzbHX3/Zj2Wk0EYnKe5USZNEZ+p7lbc4="
+        }
+      ]
+    },
+    {
+      "Route": "polyfills-6EAL64PA.js",
+      "AssetFile": "D:\\Developer\\Projects\\InvoicingApp\\API\\wwwroot\\polyfills-6EAL64PA.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "34235"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"6kfxpzEZKWcscpcc8+WFXqUXW2CtlU+9spwbgzYaCwU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 20 Sep 2024 15:50:46 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-6kfxpzEZKWcscpcc8+WFXqUXW2CtlU+9spwbgzYaCwU="
+        }
+      ]
+    },
+    {
+      "Route": "polyfills-6EAL64PA.uzifi269ha.js",
+      "AssetFile": "D:\\Developer\\Projects\\InvoicingApp\\API\\wwwroot\\polyfills-6EAL64PA.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "34235"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"6kfxpzEZKWcscpcc8+WFXqUXW2CtlU+9spwbgzYaCwU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 20 Sep 2024 15:50:46 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "uzifi269ha"
+        },
+        {
+          "Name": "label",
+          "Value": "polyfills-6EAL64PA.js"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-6kfxpzEZKWcscpcc8+WFXqUXW2CtlU+9spwbgzYaCwU="
+        }
+      ]
+    },
+    {
+      "Route": "styles-EDHLWIEQ.css",
+      "AssetFile": "D:\\Developer\\Projects\\InvoicingApp\\API\\wwwroot\\styles-EDHLWIEQ.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "112415"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"qChDy9RBJmyszASfo4DP2mQhGv0r8h2bwlL7vmwk00g=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 20 Sep 2024 15:50:46 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-qChDy9RBJmyszASfo4DP2mQhGv0r8h2bwlL7vmwk00g="
+        }
+      ]
+    },
+    {
+      "Route": "styles-EDHLWIEQ.kxm1leoki9.css",
+      "AssetFile": "D:\\Developer\\Projects\\InvoicingApp\\API\\wwwroot\\styles-EDHLWIEQ.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "112415"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"qChDy9RBJmyszASfo4DP2mQhGv0r8h2bwlL7vmwk00g=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 20 Sep 2024 15:50:46 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "kxm1leoki9"
+        },
+        {
+          "Name": "label",
+          "Value": "styles-EDHLWIEQ.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-qChDy9RBJmyszASfo4DP2mQhGv0r8h2bwlL7vmwk00g="
+        }
+      ]
     }
   ]
 }

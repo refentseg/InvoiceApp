@@ -91,7 +91,6 @@ namespace API.Extensions
         }
 
         //For searching
-
         public static IQueryable<Invoice> Search(this IQueryable<Invoice> query, string searchTerm)
         {
             if (string.IsNullOrEmpty(searchTerm)) return query;
