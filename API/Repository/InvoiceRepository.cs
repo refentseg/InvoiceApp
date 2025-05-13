@@ -6,6 +6,7 @@ using API.Extensions;
 using API.RequestHelpers;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 
 namespace API.Repository
 {
@@ -16,16 +17,16 @@ namespace API.Repository
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly ILogger<InvoiceRepository> _logger;
 
-        public InvoiceRepository(UserManager<User> userManager,InvoiceContext context, IHttpContextAccessor httpContextAccessor, ILogger<InvoiceRepository> logger)
+        public InvoiceRepository(InvoiceContext context, IHttpContextAccessor httpContextAccessor, ILogger<InvoiceRepository> logger)
         {
             _context = context;
             _httpContextAccessor = httpContextAccessor;
             _logger = logger;
-            _userManager = userManager;
         }
         //Get all Invoices
         public async Task<PagedList<InvoiceDto>> GetInvoices(InvoiceParams invoiceParams)
         {
+            //Get invoices based on query parameters
             var query = _context.Invoices
                 .Sort(invoiceParams.OrderBy)
                 .Search(invoiceParams.SearchTerm)
@@ -36,8 +37,6 @@ namespace API.Repository
                 query.ProjectInvoiceToInvoiceDto(),
                 invoiceParams.PageNumber,
                 invoiceParams.PageSize);
-
-            _httpContextAccessor.HttpContext.Response.AddPaginationHeader(invoices.MetaData);
 
             return invoices;
         }
@@ -59,7 +58,8 @@ namespace API.Repository
         //Get Filters
         public async Task<List<string>> GetFilters()
         {
-            return await _context.Invoices.Select(i => i.InvoiceStatus.ToString()).Distinct().ToListAsync();
+            return await _context.Invoices.Select(
+                i => i.InvoiceStatus.ToString()).Distinct().ToListAsync();
         }
 
         //Geting next Invoice number
@@ -79,7 +79,8 @@ namespace API.Repository
             using var transaction = await _context.Database.BeginTransactionAsync();
             try
             {
-                if (invoiceDto == null || invoiceDto.Items == null || !invoiceDto.Items.Any())
+                if (invoiceDto == null || invoiceDto.Items == null
+                 || !invoiceDto.Items.Any())
                 {
                     throw new ArgumentException("Invalid invoice data");
                 }

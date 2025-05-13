@@ -117,12 +117,13 @@ if (app.Environment.IsDevelopment())
     app.UseHttpsRedirection();
 }
 
-
+app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
 //for wwwroot folder
 app.UseStaticFiles();
-app.UseRouting();
+
+app.MapControllers(); 
 app.MapFallbackToController("Index","Fallback");
 
 

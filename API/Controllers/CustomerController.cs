@@ -24,19 +24,24 @@ namespace API.Controllers
         }
         [HttpGet(Name ="GetCustomers")]
 
-        public async Task<ActionResult<PagedList<CustomerDto>>> GetCustomers([FromQuery]CustomerParams customerParams)
+
+        public async Task<ActionResult<PagedList<CustomerDto>>> GetCustomers(
+            [FromQuery]CustomerParams customerParams)
         {
             var query = _context.Customers
                 .Sort(customerParams.OrderBy)
                 .Search(customerParams.SearchTerm)
                 .AsQueryable();  
             
-            var customers = await PagedList<CustomerDto>.ToPagedList(query.ProjectCustomerToCustomerDto(),customerParams.PageNumber,customerParams.PageSize);
+            var customers = await PagedList<CustomerDto>.ToPagedList(
+                query.ProjectCustomerToCustomerDto(),
+                customerParams.PageNumber,customerParams.PageSize);
 
             Response.AddPaginationHeader(customers.MetaData);
             return customers;
         }
 
+        
         [HttpGet("{id}",Name ="GetCustomer")]
 
         public ActionResult<Customer> GetCustomer(int id)
@@ -48,8 +53,10 @@ namespace API.Controllers
             return customer;
         }
 
+
         [HttpPost(Name = "CreateCustomer")]
-        public async Task<ActionResult<Customer>> CreateCustomer(CreateCustomerDto newCustomerDto)
+        public async Task<ActionResult<Customer>> CreateCustomer(
+            CreateCustomerDto newCustomerDto)
         {
         if (newCustomerDto == null)
         {
@@ -68,8 +75,12 @@ namespace API.Controllers
         await _context.SaveChangesAsync();
 
         // Returning 201 Created status along with the created customer
-        return CreatedAtRoute("GetCustomer", new { id = newCustomer.Id }, newCustomer);
+        return CreatedAtRoute("GetCustomer", new { id = newCustomer.Id }, 
+        newCustomer);
+
         }
+
+        
         [HttpDelete("{id}",Name = "DeleteCustomer")]
         public async Task<ActionResult> DeleteCustomer(int id)
         {

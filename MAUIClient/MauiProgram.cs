@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using MAUIClient.Services;
+using MAUIClient.Views;
+using Microsoft.Extensions.Logging;
 
 namespace MAUIClient;
 
@@ -15,8 +17,13 @@ public static class MauiProgram
 				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
 			});
 
+        builder.Services.AddSingleton<IRestService, RestService>();
+        builder.Services.AddSingleton<IInvoiceService, InvoiceService>();
+
+		builder.Services.AddSingleton<InvoiceListPage>();
+
 #if DEBUG
-		builder.Logging.AddDebug();
+        builder.Logging.AddDebug();
 #endif
 
 		return builder.Build();

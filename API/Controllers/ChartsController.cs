@@ -14,7 +14,6 @@ using Microsoft.EntityFrameworkCore;
 
 namespace API.Controllers
 {
-    [Authorize]
     /// <summary>
     /// Gets the charts data for the dashboard for the current user.
     /// </summary>
@@ -32,6 +31,7 @@ namespace API.Controllers
         [HttpGet("total-sum")]
         public async Task<long> GetInvoicesSum()
         {
+            //Get Invoices for the current user
             var currentUser = await _userManager.FindByNameAsync(User.Identity.Name);
             var invoices = await _context.Invoices
             .Where(i => i.SalesRep == currentUser.Company)
