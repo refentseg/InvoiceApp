@@ -21,6 +21,10 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace API.Controllers
 {
+    /// <summary>
+    /// Manages operations related to invoices such as retrieving, creating, updating, and deleting invoices.
+    /// Requires authentication.
+    /// </summary>
     [Authorize]
     public class InvoiceController:BaseApiController
     {
@@ -32,6 +36,11 @@ namespace API.Controllers
             _invoiceRepository=invoiceRepository;
         }
 
+        /// <summary>
+        /// Retrieves a paginated list of invoices for the current user.
+        /// </summary>
+        /// <param name="invoiceParams">Query parameters for pagination and filtering.</param>
+        /// <returns>A paginated list of invoices.</returns>
         [HttpGet]
         public async Task<ActionResult<PagedList<InvoiceDto>>> GetInvoices(
             [FromQuery]InvoiceParams invoiceParams)
@@ -45,7 +54,11 @@ namespace API.Controllers
                 return Ok(invoices);
         }
 
-
+        /// <summary>
+        /// Retrieves a specific invoice by its unique identifier.
+        /// </summary>
+        /// <param name="id">The unique ID of the invoice.</param>
+        /// <returns>The invoice DTO if found.</returns>
         [HttpGet("{id}",Name ="GetInvoice")]
         public async Task<ActionResult<InvoiceDto>> GetInvoice(string id)
         {
@@ -55,7 +68,11 @@ namespace API.Controllers
             return Ok(invoice);
 
         }
-
+        
+        /// <summary>
+        /// Retrieves the available filters for invoice search (e.g., status, customer, etc.).
+        /// </summary>
+        /// <returns>A list of filter options for invoices.</returns>
         [HttpGet("filters")]
         public async Task<IActionResult> GetFilters()
         {
@@ -64,7 +81,10 @@ namespace API.Controllers
             return Ok(filters);
         }
 
-        //Pre-Invoice Number
+        /// <summary>
+        /// Retrieves the next invoice number without incrementing the counter.
+        /// </summary>
+        /// <returns>The next available invoice number.</returns>
         [HttpGet("next")]
         public async Task<IActionResult> GetNextInvoiceNumber()
         {
@@ -74,8 +94,11 @@ namespace API.Controllers
         }
 
 
-        //Create Invoice
-
+        /// <summary>
+        /// Creates a new invoice using the provided data.
+        /// </summary>
+        /// <param name="invoiceDto">The data for the new invoice.</param>
+        /// <returns>The ID of the newly created invoice or an error.</returns>
         [HttpPost(Name="CreateInvoice")]
         public async Task<ActionResult<Invoice>> CreateInvoice(CreateInvoiceDto invoiceDto)
         {
@@ -96,7 +119,12 @@ namespace API.Controllers
             return Ok(new{id = invoiceId});
         }
         
-
+        /// <summary>
+        /// Updates an existing invoice by its ID.
+        /// </summary>
+        /// <param name="id">The ID of the invoice to update.</param>
+        /// <param name="updateDto">The updated invoice data.</param>
+        /// <returns>The updated invoice data or error details.</returns>
         [HttpPut("{id}",Name = "UpdateInvoice")]
         public async Task<ActionResult<Invoice>> UpdateInvoice(string id,UpdateInvoiceDto updateDto)
         {
@@ -133,6 +161,12 @@ namespace API.Controllers
                 return StatusCode(500, new ProblemDetails { Title = $"An unexpected error occurred. {ex}" });
             }
         }
+
+        /// <summary>
+        /// Deletes an invoice by its ID.
+        /// </summary>
+        /// <param name="id">The ID of the invoice to delete.</param>
+        /// <returns>204 No Content if successful, or 404 Not Found if the invoice does not exist.</returns>
         [HttpDelete("{id}", Name = "Delete Invoice")]
         public async Task<ActionResult> DeleteInvoice(string id)
         {

@@ -52,7 +52,13 @@ builder.Services.AddSwaggerGen(
 builder.Services.AddCors((options)=>{
     options.AddPolicy("DevCors",(corsBuilder)=>{
         //Where Framework can call requests React,Angular etc.
-        corsBuilder.WithOrigins("http://localhost:4200","http://localhost:3000","http://localhost:8000","http://localhost:5000")
+        corsBuilder.WithOrigins(
+            "http://localhost:4200",
+            "http://localhost:3000",
+            "http://localhost:8000", 
+            "http://localhost:5000",
+            "http://10.0.2.2:5000", //Android Emulator
+            "https://10.0.2.2:5001")
             .AllowAnyHeader()
             .AllowAnyMethod()
             .AllowCredentials();
@@ -108,11 +114,19 @@ if (app.Environment.IsDevelopment())
 {
     app.UseCors("DevCors");
     app.UseSwagger();
-    app.UseSwaggerUI(c => 
+    app.UseSwaggerUI(c =>
     {
         c.ConfigObject.AdditionalItems.Add("persistAuthorization", "true");
     });
-}else{
+    app.UseReDoc(c =>
+    {
+        c.RoutePrefix = "docs"; // ReDoc UI at /docs
+        c.SpecUrl("/swagger/v1/swagger.json");
+        c.DocumentTitle = "API Docs (ReDoc)";
+    });
+}
+else
+{
     app.UseCors("ProdCors");
     app.UseHttpsRedirection();
 }

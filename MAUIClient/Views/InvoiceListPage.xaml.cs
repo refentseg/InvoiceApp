@@ -8,7 +8,7 @@ namespace MAUIClient.Views;
 public partial class InvoiceListPage : ContentPage
 {
 
-	IInvoiceService _invocieService;
+	IInvoiceService _invoiceService;
 	Invoice _invoice;
         
 	public Invoice Invoice
