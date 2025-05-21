@@ -14,13 +14,22 @@ using Microsoft.EntityFrameworkCore;
 
 namespace API.Controllers
 {
-    
+    /// <summary>
+    /// Handles user account-related operations such as login, registration, and retrieving current user info.
+    /// </summary>
     public class AccountController:BaseApiController
     {
         private readonly UserManager<User> _userManager;
         private readonly TokenService _tokenService;
         private readonly InvoiceContext _context;
-        public AccountController(UserManager<User> userManager, TokenService tokenService,InvoiceContext context)
+        
+        /// <summary>
+        /// Constructor for AccountController.
+        /// </summary>
+        /// <param name="userManager">UserManager service for user operations.</param>
+        /// <param name="tokenService">TokenService for generating JWT tokens.</param>
+        /// <param name="context">Database context for persistence operations.</param>
+        public AccountController(UserManager<User> userManager, TokenService tokenService, InvoiceContext context)
         {
             _context = context;
             _tokenService = tokenService;
@@ -28,6 +37,11 @@ namespace API.Controllers
 
         }
 
+        /// <summary>
+        /// Authenticates a user and returns user details with a JWT token.
+        /// </summary>
+        /// <param name="loginDto">Login credentials.</param>
+        /// <returns>User details and JWT token if credentials are valid; otherwise, Unauthorized.</returns>
         [AllowAnonymous]
         [HttpPost("login")]
         public async Task<ActionResult<UserDto>> Login(LoginDto loginDto)
@@ -45,6 +59,12 @@ namespace API.Controllers
                 Token = await _tokenService.GenerateToken(user),
             };
         }
+
+        /// <summary>
+        /// Registers a new user account.
+        /// </summary>
+        /// <param name="registerDto">User registration data.</param>
+        /// <returns>HTTP 201 Created on success; ValidationProblem on failure.</returns>
         [AllowAnonymous]
         [HttpPost("register")]
         public async Task<ActionResult> Register(RegisterDto registerDto)
@@ -78,6 +98,10 @@ namespace API.Controllers
             return StatusCode(201);
         }
         
+          /// <summary>
+        /// Retrieves the currently authenticated user's details and a new JWT token.
+        /// </summary>
+        /// <returns>The authenticated user's information and a new token.</returns>
         [Authorize]
         [HttpGet("currentUser")]
         public async Task<ActionResult<UserDto>> GetCurrentUser()
