@@ -11,7 +11,6 @@ namespace API.Entity.InvoiceAggregate
     {
         public int Id{get;set;}
 
-        // public ProductItemOrdered ItemOrdered{get;set;}
         public string Name{get;set;} = "";
 
 

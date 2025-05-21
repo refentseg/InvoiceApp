@@ -5,11 +5,14 @@ using API.Entity;
 using API.Extensions;
 using API.RequestHelpers;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 
 namespace API.Repository
 {
     public class InvoiceRepository:IInvoiceRepository
     {
+        private readonly UserManager<User> _userManager;
         private readonly InvoiceContext _context;
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly ILogger<InvoiceRepository> _logger;
@@ -23,6 +26,7 @@ namespace API.Repository
         //Get all Invoices
         public async Task<PagedList<InvoiceDto>> GetInvoices(InvoiceParams invoiceParams)
         {
+            //Get invoices based on query parameters
             var query = _context.Invoices
                 .Sort(invoiceParams.OrderBy)
                 .Search(invoiceParams.SearchTerm)
@@ -33,8 +37,6 @@ namespace API.Repository
                 query.ProjectInvoiceToInvoiceDto(),
                 invoiceParams.PageNumber,
                 invoiceParams.PageSize);
-
-            _httpContextAccessor.HttpContext.Response.AddPaginationHeader(invoices.MetaData);
 
             return invoices;
         }
@@ -56,7 +58,8 @@ namespace API.Repository
         //Get Filters
         public async Task<List<string>> GetFilters()
         {
-            return await _context.Invoices.Select(i => i.InvoiceStatus.ToString()).Distinct().ToListAsync();
+            return await _context.Invoices.Select(
+                i => i.InvoiceStatus.ToString()).Distinct().ToListAsync();
         }
 
         //Geting next Invoice number
@@ -66,13 +69,18 @@ namespace API.Repository
             return "INVTBT" + currentIdCounter.ToString("D3");
         }
 
-        //Creating Next Invoice
+        //Creating Invoice
         public async Task<string> CreateInvoice(CreateInvoiceDto invoiceDto)
         {
+            var username = _httpContextAccessor.HttpContext.User.Identity?.Name;
+
+            var currentUser = await _userManager.FindByNameAsync(username);
+
             using var transaction = await _context.Database.BeginTransactionAsync();
             try
             {
-                if (invoiceDto == null || invoiceDto.Items == null || !invoiceDto.Items.Any())
+                if (invoiceDto == null || invoiceDto.Items == null
+                 || !invoiceDto.Items.Any())
                 {
                     throw new ArgumentException("Invalid invoice data");
                 }
@@ -112,7 +120,7 @@ namespace API.Repository
                 {
                     Id = await GenerateCustomId(),
                     Items = invoiceItems,
-                    SalesRep = _httpContextAccessor.HttpContext.User.Identity.Name,
+                    SalesRep = currentUser.Company,
                     CustomerId = customer.Id,
                     Customer = customer,
                     Subtotal = subtotal

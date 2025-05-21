@@ -4,36 +4,66 @@ using System.Linq;
 using System.Threading.Tasks;
 using API.Data;
 using API.DTO;
+using API.Entity;
 using API.Entity.InvoiceAggregate;
 using API.Extensions;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace API.Controllers
 {
+    /// <summary>
+    /// Gets the charts data for the dashboard for the current user.
+    /// </summary>
     public class ChartsController:BaseApiController
     {
+        private readonly UserManager<User> _userManager;
         private readonly InvoiceContext _context;
 
-        public ChartsController(InvoiceContext context)
+        public ChartsController(UserManager<User> userManager,
+                                 InvoiceContext context)
         {
             _context = context;
+            _userManager = userManager;
         }
 
+        /// <summary>
+        /// Gets the total sum of all invoices associated with the current user's company.
+        /// The total is returned in whole currency units (not cents).
+        /// </summary>
+        /// <returns>Total invoice amount as a long integer.</returns>
         [HttpGet("total-sum")]
         public async Task<long> GetInvoicesSum()
         {
-            var invoices = await _context.Invoices.ToListAsync();
+            //Get Invoices for the current user
+            var currentUser = await _userManager.FindByNameAsync(User.Identity.Name);
+            var invoices = await _context.Invoices
+            .Where(i => i.SalesRep == currentUser.Company)
+            .ToListAsync();
             long totalSum = invoices.Select(i => i.GetTotal()/100).Sum();
             return totalSum;
         }
+
+        /// <summary>
+        /// Gets the total sum of invoices grouped by month for the current user's company.
+        /// Each key in the returned dictionary is formatted as MM/YYYY.
+        /// </summary>
+        /// <returns>
+        /// A dictionary mapping month-year strings to the total sum of invoices for that period.
+        /// </returns>
         [HttpGet("total-sum-per-month")]
         public async Task<ActionResult<IDictionary<string, long>>> GetTotalSumPerMonth()
         {
-            var invoices = await _context.Invoices.ToListAsync();
+            var currentUser = await _userManager.FindByNameAsync(
+                                            User.Identity.Name);
+
+            var invoices = await _context.Invoices.Where(
+                i => i.SalesRep == currentUser.Company).ToListAsync();
             var totalSumPerMonth = invoices
-                .GroupBy(i => new { Year = i.OrderDate.Year, Month = i.OrderDate.Month })
+                .GroupBy(i => new { Year = i.OrderDate.Year,
+                    Month = i.OrderDate.Month })
                 .Select(g => new
                 {
                     MonthYear = $"{g.Key.Month}/{g.Key.Year}",
@@ -44,11 +74,19 @@ namespace API.Controllers
             return Ok(totalSumPerMonth);
         }
 
+        /// <summary>
+        /// Gets the total sum of invoices grouped by their status (e.g., Paid, Unpaid, Draft)
+        /// for the current user's company.
+        /// </summary>
+        /// <returns>
+        /// A dictionary mapping invoice status names to their corresponding total sum.
+        /// </returns>
         [HttpGet("sum-by-status")]
         public async Task<ActionResult<IDictionary<string, long>>> GetTotalSumByInvoiceStatus()
         {
+            var currentUser = await _userManager.FindByNameAsync(User.Identity.Name);
             var statusValues = Enum.GetValues(typeof(InvoiceStatus)).Cast<InvoiceStatus>().ToArray();
-            var invoices = await _context.Invoices.ToListAsync();
+            var invoices = await _context.Invoices.Where(i => i.SalesRep == currentUser.Company).ToListAsync();
             var sumByStatus = invoices
                 .GroupBy(i => i.InvoiceStatus)
                 .Where(g => statusValues.Contains(g.Key))

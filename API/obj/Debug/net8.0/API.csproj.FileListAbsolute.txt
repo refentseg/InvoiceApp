@@ -172,4 +172,3 @@ D:\Developer\Projects\InvoicingApp\API\bin\Debug\net8.0\API.staticwebassets.runt
 D:\Developer\Projects\InvoicingApp\API\bin\Debug\net8.0\API.staticwebassets.endpoints.json
 D:\Developer\Projects\InvoicingApp\API\obj\Debug\net8.0\staticwebassets.build.endpoints.json
 D:\Developer\Projects\InvoicingApp\API\obj\Debug\net8.0\staticwebassets\msbuild.API.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
-D:\Developer\Projects\InvoicingApp\API\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
