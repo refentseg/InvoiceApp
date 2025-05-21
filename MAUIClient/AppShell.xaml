@@ -8,11 +8,17 @@
     Shell.FlyoutBehavior="Flyout"
     Title="MAUIClient">
 
+    <!--Loading Page-->
+    <ShellContent
+        Title="Loading"
+        ContentTemplate="{DataTemplate views:LoadingPage}"
+        Route="loading" />
+
     <ShellContent
         Title="Home"
         ContentTemplate="{DataTemplate local:MainPage}"
         Route="MainPage" />
-    
+
     <ShellContent Title="Invoices"
                    ContentTemplate="{DataTemplate views:InvoiceListPage}" />
 
