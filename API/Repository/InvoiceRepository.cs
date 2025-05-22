@@ -12,25 +12,34 @@ namespace API.Repository
 {
     public class InvoiceRepository:IInvoiceRepository
     {
-        private readonly UserManager<User> _userManager;
         private readonly InvoiceContext _context;
-        private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly ILogger<InvoiceRepository> _logger;
 
-        public InvoiceRepository(InvoiceContext context, IHttpContextAccessor httpContextAccessor, ILogger<InvoiceRepository> logger)
+        public InvoiceRepository(InvoiceContext context, ILogger<InvoiceRepository> logger)
         {
             _context = context;
-            _httpContextAccessor = httpContextAccessor;
             _logger = logger;
         }
         //Get all Invoices
-        public async Task<PagedList<InvoiceDto>> GetInvoices(InvoiceParams invoiceParams)
+        public async Task<PagedList<InvoiceDto>> GetInvoices(InvoiceParams invoiceParams, User currentUser)
         {
+            //Check if the user is authenticated
+            if (currentUser == null)
+            {
+                throw new UnauthorizedAccessException("User is not authenticated");
+            }
+
+            //Check if the user has a company
+            if (string.IsNullOrEmpty(currentUser.Company))
+            {
+                throw new InvalidOperationException("User does not have a company");
+            }
             //Get invoices based on query parameters
             var query = _context.Invoices
                 .Sort(invoiceParams.OrderBy)
                 .Search(invoiceParams.SearchTerm)
                 .Filter(invoiceParams.Status)
+                .Where(i => i.SalesRep == currentUser.Company)
                 .AsQueryable();
 
             var invoices = await PagedList<InvoiceDto>.ToPagedList(
@@ -70,12 +79,9 @@ namespace API.Repository
         }
 
         //Creating Invoice
-        public async Task<string> CreateInvoice(CreateInvoiceDto invoiceDto)
+        public async Task<string> CreateInvoice(CreateInvoiceDto invoiceDto, User currentUser)
         {
-            var username = _httpContextAccessor.HttpContext.User.Identity?.Name;
-
-            var currentUser = await _userManager.FindByNameAsync(username);
-
+           
             using var transaction = await _context.Database.BeginTransactionAsync();
             try
             {

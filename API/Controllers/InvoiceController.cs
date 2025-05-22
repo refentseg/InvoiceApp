@@ -30,10 +30,13 @@ namespace API.Controllers
     {
         private readonly IInvoiceRepository _invoiceRepository;
         
+        private readonly UserManager<User> _userManager;
 
-        public InvoiceController(IInvoiceRepository invoiceRepository)
+        public InvoiceController(IInvoiceRepository invoiceRepository, 
+                                  UserManager<User> userManager)
         {
-            _invoiceRepository=invoiceRepository;
+            _userManager = userManager;
+            _invoiceRepository = invoiceRepository;
         }
 
         /// <summary>
@@ -45,9 +48,10 @@ namespace API.Controllers
         public async Task<ActionResult<PagedList<InvoiceDto>>> GetInvoices(
             [FromQuery]InvoiceParams invoiceParams)
         {
-               // Get invoices for the current user
-                var invoices = await _invoiceRepository.GetInvoices(
-                    invoiceParams);
+            var currentUser = await _userManager.FindByNameAsync(User.Identity.Name);
+               // Get invoices of users company
+            var invoices = await _invoiceRepository.GetInvoices(
+                    invoiceParams, currentUser);
                 // Add pagination headers to the response
                 Response.AddPaginationHeader(invoices.MetaData);
                 // Return the paginated invoices
@@ -102,13 +106,14 @@ namespace API.Controllers
         [HttpPost(Name="CreateInvoice")]
         public async Task<ActionResult<Invoice>> CreateInvoice(CreateInvoiceDto invoiceDto)
         {
+            var currentUser = await _userManager.FindByNameAsync(User.Identity.Name);
             // Check if the invoice data is null
             if (invoiceDto == null)
             {
                 return BadRequest("Invoice data is required.");
             }
             // Retrive id for the new invoice
-            var invoiceId = await _invoiceRepository.CreateInvoice(invoiceDto);
+            var invoiceId = await _invoiceRepository.CreateInvoice(invoiceDto, currentUser);
 
             // Check if the invoice was created successfully
             if (invoiceId == null)
