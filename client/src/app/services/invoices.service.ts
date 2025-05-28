@@ -24,7 +24,7 @@ export class InvoicesService {
       params = params.set('SearchTerm', invoiceParams.searchTerm);
     }
 
-    return this.http.get<Invoice[]>(`${this.baseUrl}/invoices`, { observe: 'response', params })
+    return this.http.get<Invoice[]>(`${this.baseUrl}/invoice`, { observe: 'response', params })
       .pipe(
         map(response => {
           const paginationMetaData: MetaData = JSON.parse(response.headers.get('Pagination')!);
@@ -33,17 +33,17 @@ export class InvoicesService {
       );
   }
   getInvoiceById(id: string): Observable<any> {
-    return this.http.get<any>(`${this.baseUrl}/invoices/${id}`);
+    return this.http.get<any>(`${this.baseUrl}/invoice/${id}`);
   }
   createInvoice(invoice:CreateInvoice):Observable<any>{
-    return this.http.post<any>(`${this.baseUrl}/invoices`,invoice);
+    return this.http.post<any>(`${this.baseUrl}/invoice`,invoice);
   }
   updateInvoice(invoice: UpdateInvoice): Observable<any> {
-    return this.http.put<any>(`${this.baseUrl}/invoices/${invoice.id}`, invoice);
+    return this.http.put<any>(`${this.baseUrl}/invoice/${invoice.id}`, invoice);
   }
 
   deleteInvoice(id:string){
-    return this.http.delete<any>(`${this.baseUrl}/invoices/${id}`)
+    return this.http.delete<any>(`${this.baseUrl}/invoice/${id}`)
   }
 
 }
