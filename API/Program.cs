@@ -49,13 +49,15 @@ builder.Services.AddSwaggerGen(
 );
 
 
-builder.Services.AddCors((options)=>{
-    options.AddPolicy("DevCors",(corsBuilder)=>{
+builder.Services.AddCors((options) =>
+{
+    options.AddPolicy("DevCors", (corsBuilder) =>
+    {
         //Where Framework can call requests React,Angular etc.
         corsBuilder.WithOrigins(
             "http://localhost:4200",
             "http://localhost:3000",
-            "http://localhost:8000", 
+            "http://localhost:8000",
             "http://localhost:5000",
             "http://10.0.2.2:5000", //Android Emulator
             "https://10.0.2.2:5001")
@@ -64,7 +66,8 @@ builder.Services.AddCors((options)=>{
             .AllowCredentials();
     });
 
-    options.AddPolicy("ProdCors",(corsBuilder)=>{
+    options.AddPolicy("ProdCors", (corsBuilder) =>
+    {
         //domain where front-end is at
         corsBuilder.WithOrigins("https://productionsite.com")
             .AllowAnyHeader()
@@ -72,8 +75,10 @@ builder.Services.AddCors((options)=>{
             .AllowCredentials();
     });
 });
+
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddScoped<IInvoiceRepository, InvoiceRepository>();
+builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
 
 //User requirements
 builder.Services.AddIdentityCore<User>(opt =>
