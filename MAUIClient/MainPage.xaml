@@ -18,6 +18,12 @@
                 Style="{StaticResource Headline}"
                 SemanticProperties.HeadingLevel="Level1" />
 
+            <Button Margin="0,20,0,0"
+                x:Name="LoginButton"
+                Clicked="LogoutButton_Clicked"
+                Text="Logout" VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="FillAndExpand"/>
+
         </VerticalStackLayout>
     </ScrollView>
 

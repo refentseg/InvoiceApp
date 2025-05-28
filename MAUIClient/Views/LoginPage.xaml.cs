@@ -36,7 +36,7 @@ public partial class LoginPage : ContentPage
                     await SecureStorage.SetAsync("user_name", $"{user.FirstName} {user.LastName}");
 
                     // Navigate to home page
-                    await Shell.Current.GoToAsync("///home");
+                    await Shell.Current.GoToAsync("///MainPage");
                 }
                 else
                 {

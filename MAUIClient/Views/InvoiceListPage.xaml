@@ -4,28 +4,29 @@
               xmlns:models="clr-namespace:MAUIClient.Models.InvoiceAggregate"
              x:Class="MAUIClient.Views.InvoiceListPage"
              Title="Invoices">
-    <CollectionView ItemsSource="{Binding Invoices}">
+    <CollectionView ItemsSource="{Binding Items}">
         <CollectionView.ItemTemplate>
             <DataTemplate x:DataType="models:Invoice">
                 <Border Stroke="LightGray"
-                        StrokeThickness="1"
-                        StrokeShape="RoundRectangle 8,8,8,8"
-                        Padding="10"
-                        Margin="5">
+                    StrokeThickness="1"
+                    StrokeShape="RoundRectangle 8,8,8,8"
+                    Padding="10"
+                    Margin="5">
                     <StackLayout>
                         <Label Text="{Binding OrderDate, 
-                                    StringFormat='Date: {0:MM/dd/yyyy}'}"
-                               FontAttributes="Bold"
-                               FontSize="14"
-                               TextColor="Gray" />
+                                StringFormat='Date: {0:MM/dd/yyyy}'}"
+                           FontAttributes="Bold"
+                           FontSize="14"
+                           TextColor="Gray" />
 
-                        <Label Text="{Binding Id}" 
-                               FontSize="18" />
+                        <Label Text="{Binding Id, 
+                                StringFormat='Invoice #: {0}'}" 
+                           FontSize="18" />
 
                         <Label Text="{Binding Total, 
-                                        StringFormat='Amount: {0:C}'}"
-                               FontSize="16"
-                               TextColor="Green" />
+                                    StringFormat='Amount: {0:C}'}"
+                           FontSize="16"
+                           TextColor="Green" />
                     </StackLayout>
                 </Border>
             </DataTemplate>

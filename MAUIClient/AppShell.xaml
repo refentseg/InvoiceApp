@@ -12,7 +12,8 @@
     <ShellContent
         Title="Loading"
         ContentTemplate="{DataTemplate views:LoadingPage}"
-        Route="loading" />
+        Route="loading"
+        />
 
     <ShellContent
         Title="Home"

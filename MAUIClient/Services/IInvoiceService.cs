@@ -1,4 +1,5 @@
 ﻿using MAUIClient.Models.InvoiceAggregate;
+using MAUIClient.Models.RequestHelpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,6 @@ namespace MAUIClient.Services
 {
     public interface IInvoiceService
     {
-        Task<List<Invoice>> GetInvoicesAsync();
+        Task<PagedResponse<Invoice>> GetInvoicesAsync();
     }
 }
