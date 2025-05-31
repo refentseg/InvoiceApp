@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MAUIClient.Views.LoadingPage"
              xmlns:mct="clr-namespace:CommunityToolkit.Maui.Behaviors;assembly=CommunityToolkit.Maui"
-             Shell.NavBarIsVisible="False"
+             Shell.NavBarIsVisible="false"
              Title="LoadingPage">
             <ContentPage.Behaviors>
                 <mct:StatusBarBehavior StatusBarColor="{StaticResource Tertiary}"/>

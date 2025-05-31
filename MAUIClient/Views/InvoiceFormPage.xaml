@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MAUIClient.Views.InvoiceFormPage"
+             x:Name="InvoiceForm"
+             Title="Invoice Form">
+    <VerticalStackLayout>
+        <!-- Existing Customer -->
+        <VerticalStackLayout>
+            <HorizontalStackLayout>
+                <CheckBox
+                x:Name="ExistingCustomerCheckBox"
+                CheckedChanged="OnExistingCustomerChanged"/>
+                <Label Text="Existing Customer" 
+                 VerticalTextAlignment="Center"/>
+            </HorizontalStackLayout>
+            
+            <!-- Existing Customer -->
+            <StackLayout x:Name="ExistingCustomerPanel"
+                         IsVisible="False">
+                <SearchBar />
+            </StackLayout>
+            
+            <!-- Add New Customer-->
+            <StackLayout x:Name="AddCustomerPanel"
+                         IsVisible="True">
+                <Entry Placeholder="Full Name" />
+                <Entry Placeholder="Company" />
+                <Entry Placeholder="Phone" />
+            </StackLayout>
+        </VerticalStackLayout>
+        
+        <!-- Items-->
+        <VerticalStackLayout>
+            <CollectionView x:Name="InvoiceCollection"
+                            ItemsSource="{Binding InvoiceItems}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <HorizontalStackLayout>
+                            <Entry Placeholder="Item Name"
+                                   Text="{Binding Name}"/>
+                            <Entry Placeholder="Quantity"
+                                   Text="{Binding Quantity}"/>
+                            <Entry Placeholder="Amount"
+                                   Text="{Binding Amount}"/>
+
+                            <Button Text="Delete"
+                                    Command="{Binding Source={x:Reference InvoiceForm}, Path=DeleteItem}"
+                                    CommandParameter="{Binding .}"
+                                    />
+                        </HorizontalStackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            
+            <Button Text="Add Item"
+                    Command="{Binding AddItem}"
+                    />
+        </VerticalStackLayout>
+       
+    </VerticalStackLayout>
+</ContentPage>
