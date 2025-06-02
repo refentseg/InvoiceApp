@@ -12,7 +12,9 @@
     <ShellContent
         Title="Loading"
         ContentTemplate="{DataTemplate views:LoadingPage}"
-        Route="loading" />
+        Route="loading"
+        
+        />
 
     <ShellContent
         Title="Home"
@@ -21,5 +23,8 @@
 
     <ShellContent Title="Invoices"
                    ContentTemplate="{DataTemplate views:InvoiceListPage}" />
+
+    <ShellContent Title="InvoiceForm"
+               ContentTemplate="{DataTemplate views:InvoiceFormPage}" />
 
 </Shell>

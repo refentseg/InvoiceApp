@@ -4,32 +4,203 @@
               xmlns:models="clr-namespace:MAUIClient.Models.InvoiceAggregate"
              x:Class="MAUIClient.Views.InvoiceListPage"
              Title="Invoices">
-    <CollectionView ItemsSource="{Binding Invoices}">
+    <StackLayout>
+        <Grid ColumnDefinitions="*, Auto" Padding="1,5">
+            <Border Grid.Column="0"
+                    Margin="5,0,10,5">
+                <Entry Placeholder="Search..."  
+                        BackgroundColor="Transparent"
+                >
+                <Entry.Clip>
+                    <RectangleGeometry Rect="4,10,192,24" />
+                </Entry.Clip>
+                </Entry>
+            </Border>
+
+            <Button Grid.Column="1"
+                    Text="Add Invoice"
+                    Padding="10"
+                    Clicked="AddInvoice_Clicked" 
+                    HorizontalOptions="End"
+                    BackgroundColor="DarkGreen"
+                    Margin="0,0,10,5"
+            />
+        </Grid>
+        
+        
+    <CollectionView ItemsSource="{Binding Items}">
         <CollectionView.ItemTemplate>
             <DataTemplate x:DataType="models:Invoice">
-                <Border Stroke="LightGray"
+                <SwipeView>
+                    <SwipeView.LeftItems>
+                        <SwipeItems>
+                            <SwipeItem Text="Edit"
+                                        BackgroundColor="Blue"
+                            />
+                            <SwipeItem Text="Delete"
+                                        BackgroundColor="Red"
+                            />
+                            
+                        </SwipeItems>
+                    </SwipeView.LeftItems>
+                    <Border Stroke="LightGray"
                         StrokeThickness="1"
                         StrokeShape="RoundRectangle 8,8,8,8"
                         Padding="10"
-                        Margin="5">
-                    <StackLayout>
-                        <Label Text="{Binding OrderDate, 
-                                    StringFormat='Date: {0:MM/dd/yyyy}'}"
-                               FontAttributes="Bold"
-                               FontSize="14"
-                               TextColor="Gray" />
+                        Margin="0,0,5,5"
+                        >
+                        <StackLayout>
+                            <Grid ColumnDefinitions="*, Auto">
+                                <Label Text="{Binding Id, 
+                                        StringFormat='# {0}'}" 
+                                         FontSize="14" 
+                                         TextColor="Grey"/>
+                            
+                                <Label Text="{Binding OrderDate, 
+                                        StringFormat='Date: {0:dd/MM/yyyy}'}"
+                                       FontAttributes="Bold"
+                                       FontSize="14"
+                                       TextColor="Gray"
+                                       HorizontalOptions="End"/>
+                            </Grid>
 
-                        <Label Text="{Binding Id}" 
-                               FontSize="18" />
+                            <Grid ColumnDefinitions="*, Auto" Padding="1,5">
+                                <Label Text="{Binding Customer.FullName}"
+                                   FontSize="18"
+                                />
 
-                        <Label Text="{Binding Total, 
-                                        StringFormat='Amount: {0:C}'}"
-                               FontSize="16"
-                               TextColor="Green" />
-                    </StackLayout>
-                </Border>
+
+                                <Label Text="{Binding TotalFormatted, 
+                                        StringFormat='Amount: {0}'}"
+                                        FontSize="16"
+                                        FontAttributes="Bold"
+                                        HorizontalOptions="End"
+                                          
+                                />
+                            </Grid>
+                            
+                            <!-- Invoice Status-->
+                            <Border Padding="6,4"
+                                   StrokeShape="RoundRectangle 10,10,10,10"
+                                    HorizontalOptions="Start"
+                                    VerticalOptions="Center"
+                                    >
+                                    <Border.Triggers>
+                                        <!-- Pending -->
+                                        <DataTrigger TargetType="Border" Binding="{Binding InvoiceStatus}" Value="Pending">
+                                            <Setter Property="Background" Value="Yellow"/>
+                                        </DataTrigger>
+                                        <DataTrigger TargetType="Border" Binding="{Binding InvoiceStatus}" Value="Pending">
+                                            <Setter Property="Stroke" Value="Gold"/>
+                                        </DataTrigger>
+                                        <!-- Approved -->
+                                        <DataTrigger TargetType="Border" Binding="{Binding InvoiceStatus}" Value="Approved">
+                                            <Setter Property="Background" Value="LightBlue"/>
+                                        </DataTrigger>
+                                        <DataTrigger TargetType="Border" Binding="{Binding InvoiceStatus}" Value="Approved">
+                                            <Setter Property="Stroke" Value="DodgerBlue"/>
+                                        </DataTrigger>
+
+                                        <!-- Sent -->
+                                        <DataTrigger TargetType="Border" Binding="{Binding InvoiceStatus}" Value="Sent">
+                                            <Setter Property="Background" Value="Lavender"/>
+                                        </DataTrigger>
+                                        <DataTrigger TargetType="Border" Binding="{Binding InvoiceStatus}" Value="Sent">
+                                            <Setter Property="Stroke" Value="SlateBlue"/>
+                                        </DataTrigger>
+
+                                        <!-- Rejected -->
+                                        <DataTrigger TargetType="Border" Binding="{Binding InvoiceStatus}" Value="Rejected">
+                                            <Setter Property="Background" Value="MistyRose"/>
+                                        </DataTrigger>
+                                        <DataTrigger TargetType="Border" Binding="{Binding InvoiceStatus}" Value="Rejected">
+                                            <Setter Property="Stroke" Value="Crimson"/>
+                                        </DataTrigger>
+
+                                        <!-- DepositPaid -->
+                                        <DataTrigger TargetType="Border" Binding="{Binding InvoiceStatus}" Value="DepositPaid">
+                                            <Setter Property="Background" Value="LightCyan"/>
+                                        </DataTrigger>
+                                        <DataTrigger TargetType="Border" Binding="{Binding InvoiceStatus}" Value="DepositPaid">
+                                            <Setter Property="Stroke" Value="MediumPurple"/>
+                                        </DataTrigger>
+
+                                        <!-- Completed -->
+                                        <DataTrigger TargetType="Border" Binding="{Binding InvoiceStatus}" Value="Completed">
+                                            <Setter Property="Background" Value="Honeydew"/>
+                                        </DataTrigger>
+                                        <DataTrigger TargetType="Border" Binding="{Binding InvoiceStatus}" Value="Completed">
+                                            <Setter Property="Stroke" Value="Teal"/>
+                                        </DataTrigger>
+
+                                        <!-- Paid -->
+                                        <DataTrigger TargetType="Border" Binding="{Binding InvoiceStatus}" Value="Paid">
+                                            <Setter Property="Background" Value="LightGreen"/>
+                                        </DataTrigger>
+                                        <DataTrigger TargetType="Border" Binding="{Binding InvoiceStatus}" Value="Paid">
+                                            <Setter Property="Stroke" Value="Green"/>
+                                        </DataTrigger>
+
+                                        <!-- Overdue -->
+                                        <DataTrigger TargetType="Border" Binding="{Binding InvoiceStatus}" Value="Overdue">
+                                            <Setter Property="Background" Value="LightCoral"/>
+                                        </DataTrigger>
+                                        <DataTrigger TargetType="Border" Binding="{Binding InvoiceStatus}" Value="Overdue">
+                                            <Setter Property="Stroke" Value="DarkRed"/>
+                                        </DataTrigger>
+                                    </Border.Triggers>
+
+                                    <Label Text="{Binding InvoiceStatus}">
+                                        <!-- Pending -->
+                                        <Label.Triggers>
+                                            <DataTrigger TargetType="Label" Binding="{Binding InvoiceStatus}" Value="Pending">
+                                                <Setter Property="TextColor" Value="DarkGoldenrod" />
+                                            </DataTrigger>
+
+                                            <!-- Approved -->
+                                            <DataTrigger TargetType="Label" Binding="{Binding InvoiceStatus}" Value="Approved">
+                                                <Setter Property="TextColor" Value="DodgerBlue" />
+                                            </DataTrigger>
+
+                                            <!-- Sent -->
+                                            <DataTrigger TargetType="Label" Binding="{Binding InvoiceStatus}" Value="Sent">
+                                                <Setter Property="TextColor" Value="SlateBlue" />
+                                            </DataTrigger>
+
+                                            <!-- Rejected -->
+                                            <DataTrigger TargetType="Label" Binding="{Binding InvoiceStatus}" Value="Rejected">
+                                                <Setter Property="TextColor" Value="Crimson" />
+                                            </DataTrigger>
+
+                                            <!-- DepositPaid -->
+                                            <DataTrigger TargetType="Label" Binding="{Binding InvoiceStatus}" Value="DepositPaid">
+                                                <Setter Property="TextColor" Value="MediumPurple" />
+                                            </DataTrigger>
+
+                                            <!-- Completed -->
+                                            <DataTrigger TargetType="Label" Binding="{Binding InvoiceStatus}" Value="Completed">
+                                                <Setter Property="TextColor" Value="Teal" />
+                                            </DataTrigger>
+
+                                            <!-- Paid -->
+                                            <DataTrigger TargetType="Label" Binding="{Binding InvoiceStatus}" Value="Paid">
+                                                <Setter Property="TextColor" Value="Green" />
+                                            </DataTrigger>
+
+                                            <!-- Overdue -->
+                                            <DataTrigger TargetType="Label" Binding="{Binding InvoiceStatus}" Value="Overdue">
+                                                <Setter Property="TextColor" Value="DarkRed" />
+                                            </DataTrigger>
+                                        </Label.Triggers>
+                                    </Label>
+                            </Border>
+                        </StackLayout>
+                    </Border>
+                </SwipeView>
             </DataTemplate>
         </CollectionView.ItemTemplate>
     </CollectionView>
+    </StackLayout>
+    
     
 </ContentPage>

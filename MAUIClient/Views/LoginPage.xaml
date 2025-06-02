@@ -33,14 +33,10 @@
              HeightRequest="2"
              HorizontalOptions="Fill" />-->
                     <VerticalStackLayout Padding="10">
-                        <Label FontFamily="Consolas" Text="Username"/>
-
                         <Entry x:Name="Username" Text="{Binding Username,Mode=TwoWay}" Margin="5,0,0,0" 
                                        Placeholder="Username" 
                                        FontSize="18">
-                            </Entry>
-  
-                            <Label FontFamily="Consolas" Text="Password"/>
+                        </Entry>
                         <Entry x:Name="Password" 
                                   Text="{Binding Password,Mode=TwoWay}" 
                                     Margin="5,0,0,0" Placeholder="Password"

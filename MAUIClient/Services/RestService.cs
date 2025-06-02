@@ -1,4 +1,5 @@
-﻿using MAUIClient.Models.Auth;
+﻿using MAUIClient.Models.RequestHelpers;
+using MAUIClient.Models.Auth;
 using MAUIClient.Models.InvoiceAggregate;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,7 @@ using System.Security.Authentication;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
+using System.Net;
 
 namespace MAUIClient.Services
 {
@@ -17,8 +19,7 @@ namespace MAUIClient.Services
     {
         HttpClient _client;
         JsonSerializerOptions _serializerOptions;
-        
-
+       
         public List<Invoice> Items { get; private set; }
 
         public RestService()
@@ -133,31 +134,53 @@ namespace MAUIClient.Services
             }
         }
 
-        public async Task<List<Invoice>> RefreshDataAsync()
+        public async Task<PagedResponse<Invoice>> RefreshDataAsync(
+            int pageNumber = 1,
+            int pageSize = 10,
+            string orderBy = "orderDate")
         {
-            Items = new List<Invoice>();
-
-            var endpoint = "api/invoice";
-
+            var endpoint = $"api/invoice?OrderBy={orderBy}";
             Uri apiUri = new Uri(string.Format(Constants.RestUrl, endpoint));
 
             try
             {
+                var token = await SecureStorage.GetAsync("jwt_token");
+                _client.DefaultRequestHeaders.Authorization =
+                    new AuthenticationHeaderValue("Bearer", token);
+
                 HttpResponseMessage response = await _client.GetAsync(apiUri);
-                //Checks if Status code is success (Status 200)
+
                 if (response.IsSuccessStatusCode)
                 {
-                    string content = await response.Content.ReadAsStringAsync();
-                    Items = JsonSerializer.Deserialize<List<Invoice>>(content);   
+                    string jsonResponse = await response.Content.ReadAsStringAsync();
+                    var invoices = JsonSerializer.Deserialize<List<Invoice>>(jsonResponse,
+                        new JsonSerializerOptions { PropertyNameCaseInsensitive = true })
+                        ?? new List<Invoice>();
+
+                    return new PagedResponse<Invoice>
+                    {
+                        Items = invoices,
+                        MetaData = new MetaData
+                        {
+                            TotalCount = invoices.Count,
+                            CurrentPage = 1,
+                            PageSize = invoices.Count,
+                            TotalPages = 1
+                        }
+                    };
                 }
-
+                else if (response.StatusCode == HttpStatusCode.Unauthorized)
+                {
+                    await Shell.Current.GoToAsync("//LoginPage");
+                    return new PagedResponse<Invoice> { Items = new List<Invoice>() };
+                }
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
-                Debug.WriteLine(@"\tERROR {0}", ex.Message);
+                Debug.WriteLine($"ERROR: {ex.Message}");
             }
 
-            return Items;
+            return new PagedResponse<Invoice> { Items = new List<Invoice>() };
 
         }
 

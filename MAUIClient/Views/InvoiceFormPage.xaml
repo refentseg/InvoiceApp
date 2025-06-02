@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MAUIClient.Views.InvoiceFormPage"
+             x:Name="InvoiceForm"
+             Title="Invoice Form">
+    <VerticalStackLayout>
+        <!-- Existing Customer -->
+        <VerticalStackLayout>
+            <HorizontalStackLayout>
+                <CheckBox
+                x:Name="ExistingCustomerCheckBox"
+                CheckedChanged="OnExistingCustomerChanged"/>
+                <Label Text="Existing Customer" 
+                 VerticalTextAlignment="Center"/>
+            </HorizontalStackLayout>
+            
+            <!-- Existing Customer -->
+            <VerticalStackLayout x:Name="ExistingCustomerPanel"
+                         IsVisible="False">
+                <SearchBar x:Name="CustomerSearchBar"
+                           Placeholder="Search customers..."
+                           TextChanged="OnSearchTextChanged"/>
+                
+                <!-- Drop Down Menu -->
+                <CollectionView x:Name="CustomersResult"
+                                IsVisible="False"
+                                SelectionMode="Single"
+                                >
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Label Text="{Binding FullName}" />
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+                
+            </VerticalStackLayout>
+            
+            <!-- Add New Customer-->
+            <StackLayout x:Name="AddCustomerPanel"
+                         IsVisible="True">
+                <Entry Placeholder="Full Name" />
+                <Entry Placeholder="Company" />
+                <Entry Placeholder="Email" Keyboard="Email"/>
+                <Entry Placeholder="Phone" Keyboard="Telephone"/>
+            </StackLayout>
+        </VerticalStackLayout>
+        
+        <!-- Items-->
+        <VerticalStackLayout>
+            <CollectionView x:Name="InvoiceCollection"
+                            ItemsSource="{Binding InvoiceItems}"
+                            EmptyView="No invoice items added yet"
+                            Margin="0,10,0,10">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <HorizontalStackLayout>
+                            <Entry Placeholder="Item Name"
+                                   Text="{Binding Name}"/>
+                            <Entry Placeholder="Quantity"
+                                   Text="{Binding Quantity}"/>
+                            <Entry Placeholder="Amount"
+                                   Text="{Binding Amount}"/>
+
+                            <Button Text="Delete"
+                                    Command="{Binding Source={x:Reference InvoiceForm}, Path=DeleteItem}"
+                                    CommandParameter="{Binding .}"
+                                    />
+                        </HorizontalStackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            
+            <Button Text="Add Item"
+                    Command="{Binding AddItem}"
+                    />
+        </VerticalStackLayout>
+        
+        <!-- Status -->
+        <Picker x:Name="picker"
+        Title="Select a Status"
+            ItemsSource="{Binding StatusOptions}"
+             Margin="0,10,0,10">
+        </Picker>
+
+
+        <Button Text="Save" 
+           BackgroundColor="Green"
+           Clicked="SaveInvoice_Clicked"/>
+
+    </VerticalStackLayout>
+</ContentPage>

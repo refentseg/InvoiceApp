@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Maui;
+using MAUIClient.Models.InvoiceAggregate;
+using MAUIClient.Models.RequestHelpers;
 using MAUIClient.Services;
-using MAUIClient.Views;
 using Microsoft.Extensions.Logging;
 
 namespace MAUIClient;
@@ -21,8 +22,7 @@ public static class MauiProgram
 
         builder.Services.AddSingleton<IRestService, RestService>();
         builder.Services.AddSingleton<IInvoiceService, InvoiceService>();
-
-		builder.Services.AddSingleton<InvoiceListPage>();
+        builder.Services.AddSingleton<ICustomerService, CustomerService>();
 
 #if DEBUG
         builder.Logging.AddDebug();
