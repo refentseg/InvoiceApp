@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MAUIClient.Methods;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,6 +25,8 @@ namespace MAUIClient.Models.InvoiceAggregate
         public long Vat { get; set; }
 
         public long Total { get; set; }
+
+        public string TotalFormatted => CurrencyHelper.CurrencyFormat(Total);
 
         public string InvoiceStatus { get; set; } = "";
     }

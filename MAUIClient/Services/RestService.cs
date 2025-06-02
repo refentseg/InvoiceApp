@@ -19,8 +19,7 @@ namespace MAUIClient.Services
     {
         HttpClient _client;
         JsonSerializerOptions _serializerOptions;
-        
-
+       
         public List<Invoice> Items { get; private set; }
 
         public RestService()
@@ -140,7 +139,7 @@ namespace MAUIClient.Services
             int pageSize = 10,
             string orderBy = "orderDate")
         {
-            var endpoint = $"api/invoice?OrderBy={orderBy}"; // Ignore pagination params
+            var endpoint = $"api/invoice?OrderBy={orderBy}";
             Uri apiUri = new Uri(string.Format(Constants.RestUrl, endpoint));
 
             try

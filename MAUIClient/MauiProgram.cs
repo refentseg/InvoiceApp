@@ -22,6 +22,7 @@ public static class MauiProgram
 
         builder.Services.AddSingleton<IRestService, RestService>();
         builder.Services.AddSingleton<IInvoiceService, InvoiceService>();
+        builder.Services.AddSingleton<ICustomerService, CustomerService>();
 
 #if DEBUG
         builder.Logging.AddDebug();
