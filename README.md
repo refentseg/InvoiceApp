@@ -99,7 +99,7 @@ The application will be available at:
 
 The Angular web client provides a full-featured interface for managing invoices and customers. Here's a demo of the application in action:
 
-*[Video demonstration will be embedded here]*
+![Usage](/assets/usage.gif)
 
 **Key Features:**
 - **Authentication**: Secure user login and registration
